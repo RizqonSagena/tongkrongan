@@ -1,0 +1,651 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><title>Taksonomi - TONGkrongan Admin</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;font-family:'Plus Jakarta Sans',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {"darkMode":"class","theme":{"extend":{"colors":{"secondary":"#1b6d24","primary-container":"#d34011","inverse-primary":"#ffb5a0","on-primary-fixed-variant":"#872000","surface":"#fcf9f8","on-secondary":"#ffffff","on-surface-variant":"#5a413a","tertiary":"#924700","on-primary-container":"#fffbff","on-tertiary":"#ffffff","background":"#fcf9f8","on-error":"#ffffff","tertiary-fixed":"#ffdcc6","on-secondary-fixed-variant":"#005312","surface-bright":"#fcf9f8","on-tertiary-container":"#fffbff","on-secondary-fixed":"#002204","surface-container-high":"#eae7e7","secondary-container":"#a0f399","on-primary-fixed":"#3b0900","error":"#ba1a1a","surface-dim":"#dcd9d9","surface-container-low":"#f6f3f2","inverse-surface":"#303030","primary-fixed-dim":"#ffb5a0","error-container":"#ffdad6","on-tertiary-fixed":"#311300","on-secondary-container":"#217128","tertiary-container":"#b75b00","on-primary":"#ffffff","secondary-fixed":"#a3f69c","on-error-container":"#93000a","primary":"#ad2c00","surface-variant":"#e5e2e1","surface-container":"#f0eded","on-tertiary-fixed-variant":"#723600","surface-container-lowest":"#ffffff","surface-tint":"#b12d00","outline-variant":"#e3beb5","on-surface":"#1b1c1c","primary-fixed":"#ffdbd1","outline":"#8f7068","inverse-on-surface":"#f3f0ef","surface-container-highest":"#e5e2e1","on-background":"#1b1c1c","secondary-fixed-dim":"#88d982","tertiary-fixed-dim":"#ffb786"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.75rem","space-md":"1rem","gutter-mobile":"0.75rem","space-xl":"1.5rem","space-3xl":"3rem","margin-mobile":"1rem","space-lg":"1.25rem","space-2xl":"2rem","space-xxs":"0.25rem","space-xs":"0.5rem","touch-target-min":"3rem"},"fontFamily":{"headline-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"display-currency-mobile":["Plus Jakarta Sans"],"display-currency":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"numeral-stat":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},"fontSize":{"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"display-currency-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.02em","fontWeight":"800"}],"display-currency":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"headline-lg":["24px",{"lineHeight":"32px","fontWeight":"700"}],"numeral-stat":["20px",{"lineHeight":"26px","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(84,42,10,0.06)] pt-safe"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-xs"><img alt="Steaming modern coffee cup combined with warm traditional culinary bowl emblem, minimalist flat vector logo icon for Indonesian warung and culinary business app called TONGkrongan, warm terracotta orange and amber color, clean white background. Design context: - Primary color: #d84315
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UDpv0utg8ZWQ9knsLt7pxxMYgnsGiys7CRC9vS2cGtn1R5W3sTiOToaH6KMBl4eC4LQwJpQH4xQokcDZvNxgVnakkLEZa-MF03v6fbF994A5JV1rKj2D0X1vxvjbux2S6c8Nq3bGTWiz4-605U0bp_i9lBL6fOR6m3x0VEwhw-yH_n2QseC_Kpah5s80ew5He_QpRgGScZm_1QeuW0fQEeFOFMWjkt6GvAg5SlokiGZl21us-9mtjO30o"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-label-lg text-label-lg text-primary tracking-tight leading-none">TONGkrongan</span><span class="font-label-sm text-label-sm uppercase px-space-xs py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold leading-none">Admin</span></div><span class="font-headline-sm text-headline-sm text-on-surface truncate max-w-[130px] leading-tight mt-0.5">Taksonomi</span></div></div><div class="flex items-center gap-space-xs"><div class="hidden sm:inline-flex items-center gap-1.5 px-space-xs py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="">Kepri Hub • Online</span></div><button aria-label="Notifikasi" class="relative min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span></button><div class="flex items-center pl-space-xxs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida/AEtjO1UPraMNP2dLO59AysK7IhOhvEr1XEoYkWNFIM9OA4eVVDplJDCwzcFg-TQ9SzBPy0qcdwa0fqNVHK_-0N2HBDtUpTvpXs8lyve9GHGvp2TkbC-Qi8tK_stNIlT_VzaBKqKW4N_su5eDpICREny4Kjot0KAZbjOAscIzQn_NbdBjztuOb_3I0t2jpFotcelx6gW9Jhh4qRue_zTLk3iq4peg3_prpNDe2kniWLGy-v3gbs2ShLWrB0m1Kio"></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface flex-grow"><div class="flex flex-col w-full">
+<div class="px-margin-mobile pt-space-sm pb-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Katalog Master Kepri</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Kategori &amp; Taksonomi Menu</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">category</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Kelola kurasi taksonomi, galeri foto &amp; video branding UMKM, serta direktori menu visual tanpa transaksi pemesanan langsung.</p>
+<div class="grid grid-cols-2 gap-space-xs mt-space-xs">
+<button class="min-h-[48px] px-space-md bg-primary text-on-primary font-label-md text-label-md rounded-full shadow-md hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-1.5" id="btn-add-cat">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="">+ Tambah Kategori</span>
+</button>
+<button class="min-h-[48px] px-space-md bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-full hover:bg-surface-container active:scale-[0.98] transition-all flex items-center justify-center gap-1.5" id="btn-reorder-mode">
+<span class="material-symbols-outlined text-[20px] text-tertiary">swap_vert</span>
+<span id="reorder-label" class="">Atur Urutan</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06),0_1px_4px_-1px_rgba(84,42,10,0.04)] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">sync</span>
+<span class="font-label-md text-label-md text-on-surface">Status Direktori Katalog &amp; Branding</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 100% Terkatalog Live</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xxs">
+<div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total Kategori</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-display-currency-mobile text-display-currency-mobile text-on-surface">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(2 Draf)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold mt-1">10 Kategori Live</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Menu Terkatalog</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-display-currency-mobile text-display-currency-mobile text-on-surface">1.420</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold mt-1">+84 Pekan Ini</span>
+</div>
+</div>
+<div class="bg-tertiary-fixed/30 rounded-xl p-space-sm flex flex-col gap-1 mt-space-xxs">
+<div class="flex items-center justify-between text-on-tertiary-fixed">
+<span class="font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">local_fire_department</span>
+            Kategori Terlaris: Kopi &amp; Kedai Kopi
+          </span>
+<span class="font-label-sm text-label-sm font-bold text-tertiary">38.4% Transaksi</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 mt-1 overflow-hidden">
+<div class="bg-tertiary h-2 rounded-full" style="width: 38.4%"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-right">Total 19.824 cangkir terjual bulan ini</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full min-h-[48px] pl-11 pr-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-xl shadow-[0_1px_4px_rgba(84,42,10,0.05)] focus:outline-none focus:ring-2 focus:ring-primary/20 placeholder:text-outline" id="search-cat" placeholder="Cari nama kategori, menu, atau warung..." type="text">
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none">
+<button class="filter-tab active px-space-md min-h-[38px] rounded-full font-label-md text-label-md bg-primary text-on-primary whitespace-nowrap shadow-sm transition-all" data-filter="all">Semua (12)</button>
+<button class="filter-tab px-space-md min-h-[38px] rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface whitespace-nowrap hover:bg-surface-container transition-all" data-filter="active">Aktif (10)</button>
+<button class="filter-tab px-space-md min-h-[38px] rounded-full font-label-md text-label-md bg-surface-container-highest text-on-surface whitespace-nowrap hover:bg-surface-container transition-all" data-filter="draft">Non-Aktif (2)</button>
+</div>
+</div>
+<div class="hidden bg-secondary-container text-on-secondary-container px-space-md py-space-xs rounded-xl flex items-center justify-between animate-fadeIn" id="reorder-info">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary animate-bounce">pan_tool</span>
+<span class="font-label-sm text-label-sm">Tekan tanda panah untuk menaikkan/menurunkan posisi</span>
+</div>
+<button class="px-space-xs py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-bold" id="btn-save-order">Simpan</button>
+</div>
+<div class="flex flex-col gap-space-xs" id="category-list">
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="1" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">coffee</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#1</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Coffee &amp; Kedai Kopi</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">142 Warung Terdaftar di Batam &amp; TPI</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Kopi Tarik</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Sanger Dingin</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Roti Bakar Srikaya</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="2" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex-shrink-0 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">rice_bowl</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#2</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Traditional &amp; Melayu</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">98 Warung Kuliner Khas</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Nasi Lemak Daun</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Luti Gendang</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Prata Melayu</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="3" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed-dim/40 flex-shrink-0 flex items-center justify-center text-tertiary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">set_meal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#3</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Seafood &amp; Olahan Laut</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">64 Resto Kelong &amp; Warung Pesisir</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Siput Gonggong</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Ikan Bakar Lebam</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Kepiting Saus</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 350*</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(Rate Khusus)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="4" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex-shrink-0 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">storefront</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#4</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Cafe &amp; Nongkrong</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">52 Titik Kumpul Kreatif</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Live Music Space</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Outdoor Chill</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Artisan Mocktail</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="5" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary-fixed-dim/40 flex-shrink-0 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#5</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Restaurant &amp; RM</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">45 Rumah Makan Padang &amp; Sunda</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Prasmanan Hidang</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Ayam Goreng Panas</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Penyetan</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="6" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">bakery_dining</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#6</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Street Food &amp; Jajanan</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">88 Gerobak &amp; Sentra Pasar UMKM</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Gorengan Hangat</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Martabak Manis</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Kue Epok-Epok</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 100*</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">(Subsidi Mikro)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="7" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex-shrink-0 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[26px]">ramen_dining</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#7</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Bakso &amp; Mie Nusantara</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">71 Kedai Bakso &amp; Mie Tarempa</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Mie Lendir</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Mie Tarempa Lembab</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Bakso Urat Sapi</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-primary font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Sembunyikan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="category-card bg-surface-container-lowest opacity-75 rounded-2xl p-space-md shadow-[0_2px_8px_-2px_rgba(84,42,10,0.06)] flex flex-col gap-space-sm" data-id="8" data-status="draft">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="reorder-handle hidden flex-col items-center justify-center p-1 cursor-grab text-on-surface-variant">
+<button class="btn-move-up p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+<button class="btn-move-down p-1 hover:text-primary"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-variant flex-shrink-0 flex items-center justify-center text-on-surface-variant shadow-sm">
+<span class="material-symbols-outlined text-[26px]">liquor</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">#8</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate">Minuman Kekinian (Draf)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Kurasi Verifikasi Menu Baru</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm font-bold flex-shrink-0">Non-Aktif</span>
+</div>
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Boba Tea</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Es Kopi Aren</span>
+</div>
+<div class="flex items-center justify-between pt-space-xxs">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Komisi POS:</span>
+<span class="font-label-md text-label-md text-outline font-bold">Rp 200</span>
+<span class="">/item</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Ubah Kategori" class="min-w-[40px] min-h-[40px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Aktifkan" class="btn-toggle-status min-w-[40px] min-h-[40px] rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility_off</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary-fixed/30 rounded-2xl p-space-md flex items-start gap-space-sm shadow-[0_1px_4px_rgba(84,42,10,0.04)] mt-space-xs"><div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-[18px]">verified</span></div><div class="flex flex-col gap-0.5"><span class="font-label-md text-label-md text-on-primary-fixed font-bold">Publikasi Portofolio Visual &amp; Katalog Non-Order</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Seluruh perubahan urutan kategori, foto showcase, dan etalase menu langsung disinkronisasi ke feed penjelajahan publik tanpa memproses transaksi kasir.</p></div></div>
+</div>
+<div class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-end justify-center" id="modal-add">
+<div class="w-full bg-surface-container-lowest rounded-t-3xl p-space-lg flex flex-col gap-space-md shadow-[0_-8px_24px_-4px_rgba(84,42,10,0.12)] max-w-lg animate-slideUp">
+<div class="w-12 h-1.5 rounded-full bg-surface-variant mx-auto"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">library_add</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Tambah Kategori Menu</span>
+</div>
+<button class="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-surface-container text-on-surface-variant" id="btn-close-modal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">Nama Kategori</label>
+<input class="min-h-[48px] px-space-md bg-surface-container-low rounded-xl text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30" placeholder="mis. Minuman Herbal Melayu" type="text">
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">Biaya Layanan Jasa Kurasi &amp; Foto Menu (Rp)</label>
+<div class="relative">
+<span class="absolute left-space-md top-1/2 -translate-y-1/2 font-label-md text-label-md text-on-surface">Rp</span>
+<input class="min-h-[48px] pl-10 pr-space-md w-full bg-surface-container-low rounded-xl text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30" type="number" value="200">
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">Contoh Menu Tagar (Pisahkan Koma)</label>
+<input class="min-h-[48px] px-space-md bg-surface-container-low rounded-xl text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30" placeholder="Air Dohot, Teh Tarik Gula Melaka" type="text">
+</div>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="flex-1 min-h-[48px] rounded-full bg-surface-container text-on-surface font-label-md text-label-md active:scale-95 transition-all" id="btn-cancel-modal">Batal</button>
+<button class="flex-1 min-h-[48px] rounded-full bg-primary text-on-primary font-label-md text-label-md font-bold shadow-md active:scale-95 transition-all" id="btn-submit-modal">Simpan &amp; Rilis</button>
+</div>
+</div>
+</div>
+<div class="fixed bottom-20 inset-x-4 z-50 transform translate-y-32 transition-transform duration-300 pointer-events-none flex justify-center" id="toast-notif">
+<div class="bg-inverse-surface text-inverse-on-surface px-space-md py-space-xs rounded-full shadow-lg flex items-center gap-2 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+<span id="toast-message" class="">Perubahan tersimpan dan disinkronkan ke POS Warung.</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const btnReorder = document.getElementById('btn-reorder-mode');
+    const reorderInfo = document.getElementById('reorder-info');
+    const reorderHandles = document.querySelectorAll('.reorder-handle');
+    const reorderLabel = document.getElementById('reorder-label');
+    const toast = document.getElementById('toast-notif');
+    const toastMessage = document.getElementById('toast-message');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const searchInput = document.getElementById('search-cat');
+    const cards = document.querySelectorAll('.category-card');
+    const btnAdd = document.getElementById('btn-add-cat');
+    const modalAdd = document.getElementById('modal-add');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnCancelModal = document.getElementById('btn-cancel-modal');
+    const btnSubmitModal = document.getElementById('btn-submit-modal');
+    const categoryList = document.getElementById('category-list');
+    const btnSaveOrder = document.getElementById('btn-save-order');
+
+    let isReordering = false;
+
+    function showToast(text) {
+      if (toastMessage) toastMessage.textContent = text;
+      if (toast) {
+        toast.classList.remove('translate-y-32');
+        setTimeout(() => {
+          toast.classList.add('translate-y-32');
+        }, 2600);
+      }
+    }
+
+    if (btnReorder) {
+      btnReorder.addEventListener('click', () => {
+        isReordering = !isReordering;
+        if (isReordering) {
+          reorderInfo.classList.remove('hidden');
+          reorderLabel.textContent = 'Selesai Urut';
+          btnReorder.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
+          reorderHandles.forEach(h => h.classList.remove('hidden'));
+        } else {
+          reorderInfo.classList.add('hidden');
+          reorderLabel.textContent = 'Atur Urutan';
+          btnReorder.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
+          reorderHandles.forEach(h => h.classList.add('hidden'));
+          showToast('Urutan kategori berhasil disimpan!');
+        }
+      });
+    }
+
+    if (btnSaveOrder) {
+      btnSaveOrder.addEventListener('click', () => {
+        isReordering = false;
+        reorderInfo.classList.add('hidden');
+        reorderLabel.textContent = 'Atur Urutan';
+        btnReorder.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
+        reorderHandles.forEach(h => h.classList.add('hidden'));
+        showToast('Urutan baru live di kasir POS pelanggan.');
+      });
+    }
+
+    document.querySelectorAll('.btn-move-up').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.category-card');
+        const prev = card.previousElementSibling;
+        if (prev && prev.classList.contains('category-card')) {
+          categoryList.insertBefore(card, prev);
+          renumberBadges();
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-move-down').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.category-card');
+        const next = card.nextElementSibling;
+        if (next && next.classList.contains('category-card')) {
+          categoryList.insertBefore(next, card);
+          renumberBadges();
+        }
+      });
+    });
+
+    function renumberBadges() {
+      const allCards = document.querySelectorAll('.category-card');
+      allCards.forEach((c, idx) => {
+        const badge = c.querySelector('.font-label-sm.px-1\\.5');
+        if (badge) {
+          badge.textContent = '#' + (idx + 1);
+        }
+      });
+    }
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-on-primary');
+          t.classList.add('bg-surface-container-highest', 'text-on-surface');
+        });
+        tab.classList.add('bg-primary', 'text-on-primary');
+        tab.classList.remove('bg-surface-container-highest', 'text-on-surface');
+
+        const filter = tab.getAttribute('data-filter');
+        cards.forEach(c => {
+          const status = c.getAttribute('data-status');
+          if (filter === 'all') {
+            c.classList.remove('hidden');
+          } else if (filter === status) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('.btn-toggle-status').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.category-card');
+        const current = card.getAttribute('data-status');
+        const badge = card.querySelector('.font-label-sm.font-bold:not(.px-1\\.5)');
+        const iconSpan = btn.querySelector('.material-symbols-outlined');
+
+        if (current === 'active') {
+          card.setAttribute('data-status', 'draft');
+          card.classList.add('opacity-75');
+          if (badge) {
+            badge.textContent = 'Non-Aktif';
+            badge.className = 'px-space-xs py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm font-bold flex-shrink-0';
+          }
+          if (iconSpan) iconSpan.textContent = 'visibility_off';
+          showToast('Kategori disembunyikan dari aplikasi POS.');
+        } else {
+          card.setAttribute('data-status', 'active');
+          card.classList.remove('opacity-75');
+          if (badge) {
+            badge.textContent = 'Aktif';
+            badge.className = 'px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0';
+          }
+          if (iconSpan) iconSpan.textContent = 'visibility';
+          showToast('Kategori kembali aktif di kasir POS.');
+        }
+      });
+    });
+
+    function openModal() {
+      if (modalAdd) modalAdd.classList.remove('hidden');
+    }
+    function closeModal() {
+      if (modalAdd) modalAdd.classList.add('hidden');
+    }
+
+    if (btnAdd) btnAdd.addEventListener('click', openModal);
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+    if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
+    if (btnSubmitModal) {
+      btnSubmitModal.addEventListener('click', () => {
+        closeModal();
+        showToast('Kategori baru berhasil ditambahkan!');
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(84,42,10,0.06)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xxs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] px-space-xxs text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="ringkasan" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm tracking-tight">Ringkasan</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] px-space-xxs text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="kampanye" href="#"><span class="material-symbols-outlined text-[22px]">campaign</span><span class="font-label-sm text-label-sm tracking-tight">Kampanye</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] px-space-xxs text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="kreator-komunitas" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-sm text-label-sm tracking-tight">Kreator</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] px-space-xxs transition-all active:scale-95 text-primary font-bold" data-path="taksonomi" href="#"><span class="material-symbols-outlined text-[22px]">category</span><span class="font-label-sm text-label-sm tracking-tight">Kategori</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] px-space-xxs text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="wilayah" href="#"><span class="material-symbols-outlined text-[22px]">location_city</span><span class="font-label-sm text-label-sm tracking-tight">Wilayah</span></a></div></nav>
+
+</body></html>
