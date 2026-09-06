@@ -168,10 +168,10 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -182,7 +182,7 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -305,8 +305,8 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: isInvestment 
-            ? AppTheme.secondary.withOpacity(0.3)
-            : AppTheme.tertiary.withOpacity(0.3),
+            ? AppTheme.secondary.withValues(alpha: 0.3)
+            : AppTheme.tertiary.withValues(alpha: 0.3),
         ),
       ),
       child: Row(
@@ -317,8 +317,8 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
             height: 48,
             decoration: BoxDecoration(
               color: isInvestment
-                ? AppTheme.secondaryContainer.withOpacity(0.3)
-                : AppTheme.tertiaryContainer.withOpacity(0.3),
+                ? AppTheme.secondaryContainer.withValues(alpha: 0.3)
+                : AppTheme.tertiaryContainer.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -349,8 +349,8 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
                         color: isInvestment 
-                          ? AppTheme.secondaryContainer.withOpacity(0.5)
-                          : AppTheme.tertiaryContainer.withOpacity(0.5),
+                          ? AppTheme.secondaryContainer.withValues(alpha: 0.5)
+                          : AppTheme.tertiaryContainer.withValues(alpha: 0.5),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(

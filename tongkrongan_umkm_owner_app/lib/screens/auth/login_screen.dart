@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tongkrongan_umkm_owner_app/theme/app_theme.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/common/role_switcher.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,223 +12,365 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _identifierController = TextEditingController(text: '081234567890');
+  final _passwordController = TextEditingController(text: '123456');
   bool _isLoading = false;
   bool _obscurePassword = true;
+  bool _rememberMe = true;
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _identifierController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _handleLogin() {
+    if (_formKey.currentState?.validate() ?? false) {
+      setState(() => _isLoading = true);
+      Future.delayed(const Duration(milliseconds: 600), () {
+        if (mounted) {
+          setState(() => _isLoading = false);
+          context.go('/owner-dashboard');
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.surface,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 60),
-              
-              // Logo and Title
+              // Top Bar with Role Switcher Quick Action
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppTheme.primaryFixed,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
+                      'UMKM & KULINER',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        color: AppTheme.onPrimaryFixed,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ),
+                  TextButton.icon(
+                    onPressed: () => RoleSwitcherSheet.show(context),
+                    icon: const Icon(Icons.swap_calls, size: 18, color: AppTheme.primary),
+                    label: const Text(
+                      'Pilih Mode Demo',
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.primary),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+
+              // Logo & Culinary Branding
               Center(
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      width: 84,
+                      height: 84,
                       decoration: BoxDecoration(
-                        color: Colors.blue[600],
-                        borderRadius: BorderRadius.circular(20),
+                        color: AppTheme.surfaceContainerLowest,
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppTheme.primary.withValues(alpha: 0.15),
+                            blurRadius: 20,
+                            offset: const Offset(0, 8),
+                          ),
+                        ],
                       ),
-                      child: const Icon(
-                        Icons.store,
-                        size: 60,
-                        color: Colors.white,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        alignment: Alignment.center,
+                        children: [
+                          const Icon(Icons.storefront, size: 44, color: AppTheme.primary),
+                          Positioned(
+                            bottom: -4,
+                            right: -4,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: AppTheme.secondary,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Text(
+                                'POS',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 24),
-                    
+                    const SizedBox(height: 16),
                     const Text(
                       'TONGkrongan',
                       style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w800,
+                        color: AppTheme.primary,
+                        letterSpacing: -0.5,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    
-                    Text(
-                      'Kelola UMKM Anda dengan Mudah',
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Solusi Kelola Usaha Kuliner & Warung Lebih Mudah',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
+                        fontSize: 13,
+                        color: AppTheme.onSurfaceVariant,
                       ),
                     ),
                   ],
                 ),
               ),
-              
-              const SizedBox(height: 60),
-              
-              // Welcome Text
-              const Text(
-                'Masuk ke Akun Anda',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 8),
-              
-              Text(
-                'Silakan masuk untuk mengelola bisnis UMKM Anda',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
-              ),
-              
-              const SizedBox(height: 40),
-              
-              // Login Form
+              const SizedBox(height: 32),
+
+              // Form
               Form(
                 key: _formKey,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Email/Phone Field
+                    const Text(
+                      'Email atau Nomor HP',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppTheme.onSurface,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     TextFormField(
-                      controller: _emailController,
+                      controller: _identifierController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: 'Email atau Nomor HP',
-                        prefixIcon: const Icon(Icons.person_outline),
+                        hintText: '0812xxxx atau email@usaha.com',
+                        prefixIcon: const Icon(Icons.account_circle_outlined, color: AppTheme.outline),
+                        filled: true,
+                        fillColor: AppTheme.surfaceContainerLow,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.blue[600]!, width: 2),
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide.none,
                         ),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Email atau nomor HP tidak boleh kosong';
-                        }
-                        return null;
-                      },
+                      validator: (val) => val == null || val.isEmpty ? 'Masukkan nomor HP atau email' : null,
                     ),
-                    const SizedBox(height: 20),
-                    
-                    // Password Field
+                    const SizedBox(height: 16),
+
+                    const Text(
+                      'Kata Sandi',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppTheme.onSurface,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     TextFormField(
                       controller: _passwordController,
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        prefixIcon: const Icon(Icons.lock_outline),
+                        hintText: 'Masukkan kata sandi',
+                        prefixIcon: const Icon(Icons.lock_outline, color: AppTheme.outline),
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                            _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            color: AppTheme.outline,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _obscurePassword = !_obscurePassword;
-                            });
-                          },
+                          onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                         ),
+                        filled: true,
+                        fillColor: AppTheme.surfaceContainerLow,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.blue[600]!, width: 2),
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide.none,
                         ),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Password tidak boleh kosong';
-                        }
-                        if (value.length < 6) {
-                          return 'Password minimal 6 karakter';
-                        }
-                        return null;
-                      },
+                      validator: (val) => val == null || val.length < 6 ? 'Minimal 6 karakter' : null,
                     ),
-                    const SizedBox(height: 16),
-                    
-                    // Forgot Password
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: _showForgotPasswordDialog,
-                        child: Text(
-                          'Lupa Password?',
-                          style: TextStyle(
-                            color: Colors.blue[600],
-                            fontWeight: FontWeight.w600,
+                    const SizedBox(height: 12),
+
+                    // Remember Me & Forgot Password
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: _rememberMe,
+                              activeColor: AppTheme.primary,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                              onChanged: (val) => setState(() => _rememberMe = val ?? true),
+                            ),
+                            const Text(
+                              'Ingat saya',
+                              style: TextStyle(fontSize: 13, color: AppTheme.onSurfaceVariant),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Tautan reset sandi dikirim via SMS/WhatsApp.')),
+                            );
+                          },
+                          child: const Text(
+                            'Lupa Sandi?',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                              color: AppTheme.primary,
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    
-                    const SizedBox(height: 32),
-                    
+                    const SizedBox(height: 20),
+
                     // Login Button
                     SizedBox(
                       width: double.infinity,
-                      height: 56,
+                      height: 52,
                       child: ElevatedButton(
-                        onPressed: _isLoading ? null : _login,
+                        onPressed: _isLoading ? null : _handleLogin,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue[600],
+                          backgroundColor: AppTheme.primary,
                           foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          elevation: 0,
                         ),
                         child: _isLoading
-                            ? const CircularProgressIndicator(color: Colors.white)
+                            ? const SizedBox(
+                                width: 22,
+                                height: 22,
+                                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                              )
                             : const Text(
-                                'Masuk',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                'Masuk ke Usaha Saya',
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                       ),
                     ),
-                    
-                    const SizedBox(height: 32),
-                    
-                    // Register Link
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Register as UMKM
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Belum punya akun warung? ',
+                    style: TextStyle(fontSize: 13, color: AppTheme.onSurfaceVariant),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Formulir pendaftaran UMKM baru dibuka.')),
+                      );
+                    },
+                    child: const Text(
+                      'Daftar UMKM',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.primary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
+
+              // Direct Role Demo Access
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppTheme.surfaceContainerLow,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppTheme.surfaceVariant),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
                       children: [
+                        Icon(Icons.touch_app, size: 16, color: AppTheme.primary),
+                        SizedBox(width: 8),
                         Text(
-                          'Belum punya akun? ',
-                          style: TextStyle(
-                            color: Colors.grey[600],
+                          'Akses Cepat Pengujian Fitur:',
+                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.onSurface),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => context.go('/owner-dashboard'),
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              side: const BorderSide(color: AppTheme.primary),
+                            ),
+                            child: const Text(
+                              '🏪 Owner',
+                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.primary),
+                            ),
                           ),
                         ),
-                        TextButton(
-                          onPressed: _showRegisterDialog,
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => context.go('/customer-home'),
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              side: const BorderSide(color: AppTheme.secondary),
+                            ),
+                            child: const Text(
+                              '🍜 Pelanggan',
+                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppTheme.secondary),
+                            ),
                           ),
-                          child: Text(
-                            'Daftar sebagai UMKM',
-                            style: TextStyle(
-                              color: Colors.blue[600],
-                              fontWeight: FontWeight.w600,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => context.go('/advertising-dashboard'),
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              side: const BorderSide(color: Color(0xFF924700)),
+                            ),
+                            child: const Text(
+                              '📢 Smart Ads',
+                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF924700)),
                             ),
                           ),
                         ),
@@ -235,131 +379,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              
-              const SizedBox(height: 40),
-              
-              // Demo Login Info
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.orange[50],
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.orange[200]!),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.info_outline, color: Colors.orange[800]),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Demo Login',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.orange[800],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Gunakan email/HP apapun dan password minimal 6 karakter untuk demo',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.orange[700],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  void _login() async {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    // Simulate login API call
-    await Future.delayed(const Duration(seconds: 2));
-
-    setState(() {
-      _isLoading = false;
-    });
-
-    // Navigate to owner dashboard
-    if (mounted) {
-      context.go('/owner-dashboard');
-    }
-  }
-
-  void _showForgotPasswordDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Lupa Password'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Masukkan email atau nomor HP Anda:'),
-            const SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email atau Nomor HP',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Batal'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Link reset password telah dikirim'),
-                  backgroundColor: Colors.green,
-                ),
-              );
-            },
-            child: const Text('Kirim'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showRegisterDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Daftar sebagai UMKM'),
-        content: const Text(
-          'Fitur registrasi akan tersedia segera. '
-          'Saat ini Anda dapat menggunakan demo login untuk menjelajahi aplikasi.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
       ),
     );
   }

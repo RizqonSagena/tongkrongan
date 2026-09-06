@@ -103,12 +103,10 @@ class AppTheme {
         onSurfaceVariant: onSurfaceVariant,
         outline: outline,
         outlineVariant: outlineVariant,
-        background: background,
-        onBackground: onBackground,
         inverseSurface: inverseSurface,
         onInverseSurface: inverseOnSurface,
         inversePrimary: inversePrimary,
-        surfaceVariant: surfaceVariant,
+        surfaceContainerHighest: surfaceVariant,
         surfaceTint: surfaceTint,
       ),
       textTheme: GoogleFonts.plusJakartaSansTextTheme().copyWith(
@@ -192,7 +190,7 @@ class AppTheme {
       
       // App Bar Theme
       appBarTheme: AppBarTheme(
-        backgroundColor: surface.withOpacity(0.85),
+        backgroundColor: surface.withValues(alpha: 0.85),
         foregroundColor: onSurface,
         elevation: 0,
         scrolledUnderElevation: 1,
@@ -278,14 +276,14 @@ class AppTheme {
         hintStyle: GoogleFonts.plusJakartaSans(
           fontSize: 16,
           fontWeight: FontWeight.w700,
-          color: outline.withOpacity(0.6),
+          color: outline.withValues(alpha: 0.6),
         ),
       ),
       
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceContainerLowest,
-        shadowColor: onSurface.withOpacity(0.05),
+        shadowColor: onSurface.withValues(alpha: 0.05),
         elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusXl),

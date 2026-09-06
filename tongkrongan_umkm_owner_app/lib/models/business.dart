@@ -19,11 +19,9 @@ class Business {
     required this.description,
     required this.address,
     required this.phone,
-    this.email,
+    required this.operatingHours, required this.createdAt, this.email,
     this.logo,
     this.status = BusinessStatus.active,
-    required this.operatingHours,
-    required this.createdAt,
     this.updatedAt,
   });
 
@@ -131,7 +129,7 @@ class BusinessHours {
   });
 
   List<String> get operatingDays {
-    List<String> days = [];
+    final List<String> days = [];
     if (monday != null) days.add('Senin');
     if (tuesday != null) days.add('Selasa');
     if (wednesday != null) days.add('Rabu');

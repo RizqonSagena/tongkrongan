@@ -6,8 +6,7 @@ class OwnerBottomNavigation extends StatelessWidget {
   final int currentIndex;
 
   const OwnerBottomNavigation({
-    super.key,
-    required this.currentIndex,
+    required this.currentIndex, super.key,
   });
 
   @override
@@ -17,7 +16,7 @@ class OwnerBottomNavigation extends StatelessWidget {
         color: AppTheme.surfaceContainerLowest,
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.1),
+            color: AppTheme.onSurface.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -96,7 +95,7 @@ class OwnerBottomNavigation extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppTheme.primary.withOpacity(0.1) : Colors.transparent,
+                  color: isSelected ? AppTheme.primary.withValues(alpha: 0.1) : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/owner/bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
 
 class FinancialReportScreen extends StatefulWidget {
   const FinancialReportScreen({super.key});
@@ -160,7 +160,7 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _exportReport(),
         backgroundColor: Colors.blue[600],
@@ -287,7 +287,7 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
@@ -437,7 +437,7 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
       width: isWide ? double.infinity : null,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -513,7 +513,7 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: 6,
                       child: LinearProgressIndicator(
                         value: sales[index] / sales.reduce((a, b) => a > b ? a : b),
@@ -564,13 +564,13 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
           ),
           const SizedBox(height: 20),
           
-          Container(
+          SizedBox(
             height: 150,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: List.generate(days.length, (index) {
-                double height = (sales[index] / sales.reduce((a, b) => a > b ? a : b)) * 120;
+                final double height = (sales[index] / sales.reduce((a, b) => a > b ? a : b)) * 120;
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -631,8 +631,8 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
   }
 
   Widget _buildComparisonItem(String label, num current, num previous) {
-    double percentage = ((current - previous) / previous * 100);
-    bool isPositive = percentage > 0;
+    final double percentage = ((current - previous) / previous * 100);
+    final bool isPositive = percentage > 0;
     
     return Container(
       margin: const EdgeInsets.only(bottom: 16),

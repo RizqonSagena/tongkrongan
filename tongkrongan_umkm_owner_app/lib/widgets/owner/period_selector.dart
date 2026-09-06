@@ -7,10 +7,7 @@ class PeriodSelector extends StatelessWidget {
   final Function(String) onPeriodChanged;
 
   const PeriodSelector({
-    super.key,
-    required this.periods,
-    required this.selectedPeriod,
-    required this.onPeriodChanged,
+    required this.periods, required this.selectedPeriod, required this.onPeriodChanged, super.key,
   });
 
   @override
@@ -35,7 +32,7 @@ class PeriodSelector extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                   boxShadow: isSelected ? [
                     BoxShadow(
-                      color: AppTheme.primary.withOpacity(0.3),
+                      color: AppTheme.primary.withValues(alpha: 0.3),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),

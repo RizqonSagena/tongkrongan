@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -151,8 +153,8 @@ class _CustomerOnboardingScreenState extends State<CustomerOnboardingScreen> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    page.backgroundColor.withOpacity(0.1),
-                    page.backgroundColor.withOpacity(0.2),
+                    page.backgroundColor.withValues(alpha: 0.1),
+                    page.backgroundColor.withValues(alpha: 0.2),
                   ],
                 ),
               ),
@@ -170,7 +172,7 @@ class _CustomerOnboardingScreenState extends State<CustomerOnboardingScreen> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: page.backgroundColor.withOpacity(0.3),
+                          color: page.backgroundColor.withValues(alpha: 0.3),
                           blurRadius: 20,
                           offset: const Offset(0, 8),
                         ),
@@ -236,7 +238,7 @@ class _CustomerOnboardingScreenState extends State<CustomerOnboardingScreen> {
     return Stack(
       children: List.generate(6, (index) {
         final angle = (index * 60.0) * (3.14159 / 180); // Convert to radians
-        final radius = 80.0;
+        const radius = 80.0;
         final x = radius * math.cos(angle);
         final y = radius * math.sin(angle);
 
@@ -247,7 +249,7 @@ class _CustomerOnboardingScreenState extends State<CustomerOnboardingScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-              border: Border.all(color: color.withOpacity(0.2), width: 2),
+              border: Border.all(color: color.withValues(alpha: 0.2), width: 2),
             ),
             child: Icon(
               icons[index],
@@ -298,9 +300,6 @@ class _CustomerOnboardingScreenState extends State<CustomerOnboardingScreen> {
     context.go('/customer-home');
   }
 }
-
-// Import math untuk angle calculation
-import 'dart:math' as math;
 
 class OnboardingPage {
   final String title;

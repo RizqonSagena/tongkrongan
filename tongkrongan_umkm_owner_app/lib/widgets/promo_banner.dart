@@ -8,10 +8,7 @@ class PromoBanner extends StatelessWidget {
   final VoidCallback? onTap;
 
   const PromoBanner({
-    super.key,
-    required this.title,
-    required this.subtitle,
-    required this.timeLeft,
+    required this.title, required this.subtitle, required this.timeLeft, super.key,
     this.onTap,
   });
 
@@ -27,7 +24,7 @@ class PromoBanner extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: AppTheme.primary.withOpacity(0.2),
+              color: AppTheme.primary.withValues(alpha: 0.2),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -43,7 +40,7 @@ class PromoBanner extends StatelessWidget {
                 width: 112,
                 height: 112,
                 decoration: BoxDecoration(
-                  color: AppTheme.onPrimaryContainer.withOpacity(0.1),
+                  color: AppTheme.onPrimaryContainer.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
               ),
@@ -58,7 +55,7 @@ class PromoBanner extends StatelessWidget {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(AppTheme.radiusXl),
                   ),
                   child: const Icon(
@@ -79,7 +76,7 @@ class PromoBanner extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha: 0.25),
                           borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                         ),
                         child: Text(
@@ -108,7 +105,7 @@ class PromoBanner extends StatelessWidget {
                       Text(
                         subtitle,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                         ),
                       ),
                       
@@ -126,7 +123,7 @@ class PromoBanner extends StatelessWidget {
                               borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppTheme.onSurface.withOpacity(0.1),
+                                  color: AppTheme.onSurface.withValues(alpha: 0.1),
                                   blurRadius: 4,
                                 ),
                               ],
@@ -153,7 +150,7 @@ class PromoBanner extends StatelessWidget {
                           Text(
                             timeLeft,
                             style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 0.8),
                             ),
                           ),
                         ],

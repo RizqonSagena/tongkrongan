@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../screens/customer/customer_home_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
 
 class BusinessCard extends StatelessWidget {
   final Business business;
@@ -7,8 +7,7 @@ class BusinessCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const BusinessCard({
-    super.key,
-    required this.business,
+    required this.business, super.key,
     this.isHorizontal = false,
     this.onTap,
   });
@@ -30,7 +29,7 @@ class BusinessCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -210,7 +209,7 @@ class BusinessCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -391,8 +390,8 @@ class BusinessCard extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            color.withOpacity(0.1),
-            color.withOpacity(0.3),
+            color.withValues(alpha: 0.1),
+            color.withValues(alpha: 0.3),
           ],
         ),
       ),

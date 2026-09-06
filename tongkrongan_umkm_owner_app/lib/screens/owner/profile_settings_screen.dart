@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/owner/bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -109,7 +109,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
     );
   }
 
@@ -219,7 +219,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           const SizedBox(height: 16),
           
           DropdownButtonFormField<String>(
-            value: _businessCategoryController.text,
+            initialValue: _businessCategoryController.text,
             decoration: const InputDecoration(
               labelText: 'Kategori Bisnis',
               prefixIcon: Icon(Icons.category),
@@ -393,7 +393,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           Wrap(
             spacing: 8,
             children: operatingDays.map((day) {
-              bool isSelected = selectedDays.contains(day);
+              final bool isSelected = selectedDays.contains(day);
               return FilterChip(
                 label: Text(day),
                 selected: isSelected,
@@ -630,23 +630,23 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Bantuan & Dukungan'),
-        content: Column(
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Hubungi kami:'),
-            const SizedBox(height: 12),
+            Text('Hubungi kami:'),
+            SizedBox(height: 12),
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.phone),
-              title: const Text('+62 21 1234 5678'),
-              subtitle: const Text('Customer Service'),
+              leading: Icon(Icons.phone),
+              title: Text('+62 21 1234 5678'),
+              subtitle: Text('Customer Service'),
             ),
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.email),
-              title: const Text('support@tongkrongan.com'),
-              subtitle: const Text('Email Support'),
+              leading: Icon(Icons.email),
+              title: Text('support@tongkrongan.com'),
+              subtitle: Text('Email Support'),
             ),
           ],
         ),

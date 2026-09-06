@@ -14,7 +14,7 @@ class RevenueChart extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -36,13 +36,13 @@ class RevenueChart extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppTheme.secondaryContainer.withOpacity(0.3),
+                  color: AppTheme.secondaryContainer.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.trending_up,
                       size: 16,
                       color: AppTheme.secondary,
@@ -67,7 +67,7 @@ class RevenueChart extends StatelessWidget {
             height: 120,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: AppTheme.surfaceContainer.withOpacity(0.5),
+              color: AppTheme.surfaceContainer.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(12),
             ),
             child: CustomPaint(
@@ -110,7 +110,7 @@ class RevenueChart extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           value,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 10,
             color: AppTheme.onSurfaceVariant,
           ),
@@ -131,13 +131,13 @@ class _RevenueBars extends CustomPainter {
     // Sample data (heights as percentages)
     final heights = [0.6, 0.7, 0.65, 0.8, 0.9, 1.0, 0.85];
     final colors = [
-      AppTheme.primary.withOpacity(0.6),
-      AppTheme.primary.withOpacity(0.6),
-      AppTheme.primary.withOpacity(0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
       AppTheme.primary, // Today
-      AppTheme.primary.withOpacity(0.6),
-      AppTheme.primary.withOpacity(0.6),
-      AppTheme.primary.withOpacity(0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
+      AppTheme.primary.withValues(alpha: 0.6),
     ];
     
     for (int i = 0; i < heights.length; i++) {

@@ -5,8 +5,7 @@ class CustomerBottomNavigation extends StatelessWidget {
   final int currentIndex;
 
   const CustomerBottomNavigation({
-    super.key,
-    required this.currentIndex,
+    required this.currentIndex, super.key,
   });
 
   @override
@@ -16,7 +15,7 @@ class CustomerBottomNavigation extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -100,7 +99,7 @@ class CustomerBottomNavigation extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: isActive 
-              ? primaryColor.withOpacity(0.1) 
+              ? primaryColor.withValues(alpha: 0.1) 
               : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../screens/customer/customer_home_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
 
 class CategoryChip extends StatelessWidget {
   final CategoryItem category;
@@ -7,8 +7,7 @@ class CategoryChip extends StatelessWidget {
   final VoidCallback? onTap;
 
   const CategoryChip({
-    super.key,
-    required this.category,
+    required this.category, super.key,
     this.isSelected = false,
     this.onTap,
   });
@@ -29,7 +28,7 @@ class CategoryChip extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -44,7 +43,7 @@ class CategoryChip extends StatelessWidget {
               height: 48,
               decoration: BoxDecoration(
                 color: isSelected 
-                    ? category.color.withOpacity(0.1)
+                    ? category.color.withValues(alpha: 0.1)
                     : Colors.grey[50],
                 borderRadius: BorderRadius.circular(12),
               ),

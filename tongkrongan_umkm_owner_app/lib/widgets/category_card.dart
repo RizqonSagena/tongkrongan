@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tongkrongan_umkm_owner_app/theme/app_theme.dart';
-import 'package:tongkrongan_umkm_owner_app/screens/home/customer_home_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
 
 class CategoryCard extends StatelessWidget {
   final CategoryItem category;
 
   const CategoryCard({
-    super.key,
-    required this.category,
+    required this.category, super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go(category.route);
+        context.go('/category-results/${category.name}');
       },
       borderRadius: BorderRadius.circular(16),
-      child: Container(
+      child: SizedBox(
         width: 70,
         child: Column(
           children: [
@@ -30,7 +29,7 @@ class CategoryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.onSurface.withOpacity(0.05),
+                    color: AppTheme.onSurface.withValues(alpha: 0.05),
                     blurRadius: 4,
                     offset: const Offset(0, 1),
                   ),
@@ -38,7 +37,7 @@ class CategoryCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  category.icon,
+                  category.emoji,
                   style: const TextStyle(fontSize: 24),
                 ),
               ),

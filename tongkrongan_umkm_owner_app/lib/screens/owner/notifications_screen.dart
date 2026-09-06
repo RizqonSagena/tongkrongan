@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/owner/bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -156,7 +156,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           _buildNotificationList(readNotifications),
         ],
       ),
-      bottomNavigationBar: const BottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
       floatingActionButton: unreadNotifications.isNotEmpty
           ? FloatingActionButton.extended(
               onPressed: _markAllAsRead,
@@ -233,7 +233,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: _getNotificationTypeColor(notification.type).withOpacity(0.1),
+                    color: _getNotificationTypeColor(notification.type).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Icon(
@@ -304,7 +304,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: _getNotificationTypeColor(notification.type).withOpacity(0.1),
+                              color: _getNotificationTypeColor(notification.type).withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Text(
@@ -414,7 +414,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   void _markAllAsRead() {
     setState(() {
-      for (var notification in allNotifications) {
+      for (final notification in allNotifications) {
         notification.isRead = true;
       }
     });
@@ -446,7 +446,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: _getNotificationTypeColor(notification.type).withOpacity(0.1),
+                    color: _getNotificationTypeColor(notification.type).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../widgets/customer/business_card.dart';
-import '../../widgets/customer/customer_bottom_navigation.dart';
-import '../../screens/customer/customer_home_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/customer/business_card.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/customer/customer_bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
 
 class ExploreMapScreen extends StatefulWidget {
   const ExploreMapScreen({super.key});
@@ -263,7 +263,7 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
             child: CustomPaint(
               painter: RadiusCirclePainter(
                 radius: _getRadiusInPixels(),
-                color: Colors.blue.withOpacity(0.1),
+                color: Colors.blue.withValues(alpha: 0.1),
               ),
             ),
           ),
@@ -331,7 +331,7 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withValues(alpha: 0.2),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),

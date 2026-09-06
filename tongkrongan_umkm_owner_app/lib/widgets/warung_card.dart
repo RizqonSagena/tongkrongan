@@ -16,15 +16,7 @@ class WarungCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const WarungCard({
-    super.key,
-    required this.id,
-    required this.name,
-    required this.category,
-    required this.rating,
-    required this.reviewCount,
-    required this.distance,
-    required this.priceStart,
-    required this.imageUrl,
+    required this.id, required this.name, required this.category, required this.rating, required this.reviewCount, required this.distance, required this.priceStart, required this.imageUrl, super.key,
     this.isOpen = true,
     this.onTap,
   });
@@ -47,7 +39,7 @@ class WarungCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: AppTheme.onSurface.withOpacity(0.05),
+              color: AppTheme.onSurface.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -134,8 +126,8 @@ class WarungCard extends StatelessWidget {
   Widget _buildImageSection() {
     return Container(
       height: 144,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       child: Stack(
         children: [
@@ -180,7 +172,7 @@ class WarungCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.onSurface.withOpacity(0.1),
+                    color: AppTheme.onSurface.withValues(alpha: 0.1),
                     blurRadius: 4,
                   ),
                 ],
@@ -217,11 +209,11 @@ class WarungCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
-                color: AppTheme.surfaceContainerLowest.withOpacity(0.9),
+                color: AppTheme.surfaceContainerLowest.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.onSurface.withOpacity(0.1),
+                    color: AppTheme.onSurface.withValues(alpha: 0.1),
                     blurRadius: 4,
                   ),
                 ],
@@ -255,27 +247,27 @@ class WarungCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: AppTheme.surface.withOpacity(0.9),
+                color: AppTheme.surface.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(AppTheme.radiusFull),
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.onSurface.withOpacity(0.1),
+                    color: AppTheme.onSurface.withValues(alpha: 0.1),
                     blurRadius: 4,
                   ),
                 ],
               ),
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.storefront,
                     size: 12,
                     color: AppTheme.primary,
                   ),
-                  const SizedBox(width: 3),
-                  Text(
+                  SizedBox(width: 3),
+                  const Text(
                     'Pesan Langsung di Tempat',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: AppTheme.primary,
@@ -329,7 +321,7 @@ class WarungCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppTheme.radiusFull),
               boxShadow: [
                 BoxShadow(
-                  color: AppTheme.primary.withOpacity(0.2),
+                  color: AppTheme.primary.withValues(alpha: 0.2),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),

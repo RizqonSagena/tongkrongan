@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/owner/bottom_navigation.dart';
-import '../../widgets/owner/period_selector.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/period_selector.dart';
 
 class BookkeepingScreen extends StatefulWidget {
   const BookkeepingScreen({super.key});
@@ -80,6 +80,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
           children: [
             // Period Selector
             PeriodSelector(
+              periods: const ['Hari Ini', 'Minggu Ini', 'Bulan Ini', 'Tahun Ini'],
               selectedPeriod: selectedPeriod,
               onPeriodChanged: (period) {
                 setState(() {
@@ -149,7 +150,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(currentIndex: 3),
+      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 3),
     );
   }
 
@@ -166,7 +167,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(icon, color: color, size: 24),
@@ -331,7 +332,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
               Expanded(
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 120,
                       child: Stack(
                         alignment: Alignment.bottomCenter,
@@ -377,7 +378,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
               Expanded(
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 120,
                       child: Stack(
                         alignment: Alignment.bottomCenter,
@@ -447,15 +448,15 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
           ),
           const SizedBox(height: 20),
           
-          Container(
+          SizedBox(
             height: 200,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: monthlyTrend.map((data) {
-                double maxAmount = monthlyTrend.map((e) => e.revenue).reduce((a, b) => a > b ? a : b);
-                double revenueHeight = (data.revenue / maxAmount) * 150;
-                double expensesHeight = (data.expenses / maxAmount) * 150;
+                final double maxAmount = monthlyTrend.map((e) => e.revenue).reduce((a, b) => a > b ? a : b);
+                final double revenueHeight = (data.revenue / maxAmount) * 150;
+                final double expensesHeight = (data.expenses / maxAmount) * 150;
                 
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.end,

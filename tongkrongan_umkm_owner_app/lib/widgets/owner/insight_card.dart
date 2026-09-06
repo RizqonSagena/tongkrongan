@@ -10,13 +10,7 @@ class InsightCard extends StatelessWidget {
   final Color backgroundColor;
 
   const InsightCard({
-    super.key,
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.description,
-    required this.value,
-    required this.backgroundColor,
+    required this.icon, required this.iconColor, required this.title, required this.description, required this.value, required this.backgroundColor, super.key,
   });
 
   @override
@@ -29,7 +23,7 @@ class InsightCard extends StatelessWidget {
         border: Border.all(color: backgroundColor),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

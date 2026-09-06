@@ -161,10 +161,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -235,7 +235,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.outline.withOpacity(0.3)),
+        border: Border.all(color: AppTheme.outline.withValues(alpha: 0.3)),
       ),
       child: TextField(
         controller: _searchController,
@@ -298,7 +298,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.outline.withOpacity(0.1)),
+        border: Border.all(color: AppTheme.outline.withValues(alpha: 0.1)),
       ),
       child: Row(
         children: [
@@ -307,7 +307,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: AppTheme.primaryFixed.withOpacity(0.3),
+              color: AppTheme.primaryFixed.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(

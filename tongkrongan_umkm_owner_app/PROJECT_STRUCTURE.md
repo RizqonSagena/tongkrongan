@@ -1,195 +1,85 @@
-# Project Structure Overview
+# TONGkrongan - Arsitektur & Struktur Proyek Flutter
 
-## Directory Organization
-
-```
-tongkrongan_umkm_owner_app/
-├── android/                          # Android-specific files
-├── ios/                              # iOS-specific files  
-├── web/                              # Web-specific files
-├── test/                             # Test files
-├── lib/                              # Flutter source code
-│   ├── main.dart                     # App entry point with routing
-│   ├── theme/
-│   │   └── app_theme.dart           # Material 3 theme system
-│   ├── screens/                     # Screen implementations
-│   │   ├── auth/                    # Authentication screens
-│   │   │   ├── customer_onboarding_screen.dart  ✅ Complete
-│   │   │   └── login_screen.dart                 ✅ Complete
-│   │   ├── home/                    # Home & discovery screens
-│   │   │   ├── customer_home_screen.dart         ✅ Complete
-│   │   │   ├── explore_map_screen.dart           📋 Stub
-│   │   │   └── category_results_screen.dart      📋 Stub
-│   │   ├── dashboard/               # Analytics dashboards
-│   │   │   ├── dashboard_pembukuan_screen.dart           ✅ Complete
-│   │   │   ├── dashboard_produk_margin_screen.dart       📋 Stub
-│   │   │   └── dashboard_transaksi_volume_screen.dart    📋 Stub
-│   │   ├── management/              # Business management
-│   │   │   ├── auto_play_monitoring_screen.dart          📋 Stub
-│   │   │   ├── creator_management_screen.dart            📋 Stub
-│   │   │   ├── category_management_screen.dart           📋 Stub
-│   │   │   ├── location_management_screen.dart           📋 Stub
-│   │   │   └── edit_kategori_taksonomi_screen.dart       📋 Stub
-│   │   ├── warung/                  # Restaurant details
-│   │   │   ├── detail_warung_screen.dart         📋 Stub
-│   │   │   └── menu_harga_screen.dart            📋 Stub
-│   │   └── profile/                 # User profile & settings
-│   │       ├── favorit_tersimpan_screen.dart     📋 Stub
-│   │       └── notifikasi_pelanggan_screen.dart  📋 Stub
-│   ├── widgets/                     # Reusable UI components
-│   │   ├── category_card.dart       ✅ Complete
-│   │   ├── warung_card.dart         ✅ Complete
-│   │   └── promo_banner.dart        ✅ Complete
-│   ├── models/                      # Data models (empty, ready for implementation)
-│   ├── services/                    # API services (empty, ready for implementation)
-│   └── utils/                       # Utility functions (empty, ready for implementation)
-├── html_references/                 # Original HTML prototypes
-│   ├── 1._customer_onboarding/
-│   ├── 1._login_pemilik_umkm/
-│   ├── 2._customer_home/
-│   ├── 3._explore_map/
-│   ├── 4._category_results/
-│   ├── 5._detail_warung/
-│   ├── 6._menu_harga/
-│   ├── 7._auto_play_monitoring_mobile/
-│   ├── 7._favorit_tersimpan/
-│   ├── 8._creator_management_mobile/
-│   ├── 8._notifikasi_pelanggan/
-│   ├── 9._category_management_mobile/
-│   ├── 10._location_management_mobile/
-│   ├── dashboard_pembukuan_arus_kas/
-│   ├── dashboard_produk_margin_penjualan_cup/
-│   ├── dashboard_transaksi_volume_cup/
-│   ├── edit_kategori_taksonomi_menu_mobile/
-│   ├── warung_modern/
-│   └── README.md                    # HTML to Flutter mapping
-├── pubspec.yaml                     # Dependencies and project config
-├── analysis_options.yaml           # Dart/Flutter linting rules
-├── README.md                        # Project documentation
-├── MIGRATION_REPORT.md              # Detailed migration report
-└── PROJECT_STRUCTURE.md             # This file
-```
-
-## Implementation Status
-
-### ✅ Completed Components (7/24)
-1. **App Architecture** - Complete Flutter project structure
-2. **Theme System** - Material 3 with custom TONGkrongan branding
-3. **Navigation** - Go Router with all 21 routes configured
-4. **Login Screen** - Full authentication UI
-5. **Customer Onboarding** - Multi-page onboarding flow
-6. **Customer Home** - Main discovery screen with categories
-7. **Dashboard Pembukuan** - Financial dashboard with metrics
-
-### 📋 Ready for Implementation (17/24)
-- **13 Screen Stubs** - All screens created with basic structure
-- **3 Infrastructure Components** - Models, Services, Utils directories
-- **1 Additional Reference** - warung_modern HTML prototype
-
-## Key Features by Module
-
-### 🔐 Authentication Module
-- **Login Methods**: Phone/WhatsApp + Email options
-- **Security**: Password encryption, remember me functionality
-- **Social Login**: Google SSO integration ready
-- **Onboarding**: Multi-step user introduction flow
-
-### 🏠 Home & Discovery Module  
-- **Location-based**: Current location with radius selection
-- **Search & Filter**: Voice search, category filtering
-- **Categories**: 9 food categories with emoji icons
-- **Promotions**: Dynamic promo banners with QR codes
-- **Listings**: Restaurant cards with ratings and distance
-
-### 📊 Dashboard & Analytics Module
-- **Financial Tracking**: Income, expenses, profit/loss
-- **Period Selection**: Daily, weekly, monthly views
-- **Visual Analytics**: Chart placeholders for data visualization
-- **Transaction History**: Recent transaction listings
-- **Business Metrics**: KPI tracking and reporting
-
-### 🏪 Restaurant Management Module
-- **Restaurant Details**: Full information display with photos
-- **Menu Management**: Pricing and item management
-- **Category Admin**: Business category management
-- **Location Settings**: Multi-location restaurant support
-- **Creator Tools**: Content management for restaurant owners
-
-### 👤 Profile & User Module
-- **Favorites**: Saved restaurant bookmarks
-- **Notifications**: Customer communication system
-- **Settings**: User preferences and account management
-
-## Technical Architecture
-
-### 🎨 Design System
-- **Typography**: Plus Jakarta Sans with 7 text styles
-- **Colors**: Material 3 palette with custom brand colors
-- **Spacing**: 8px grid system with 8 size variants
-- **Components**: Consistent button styles, cards, and form elements
-
-### 🚀 Technology Stack
-- **Framework**: Flutter 3.1.0+ with Dart 3.1.0+
-- **State Management**: Flutter Riverpod
-- **Navigation**: Go Router for declarative routing  
-- **HTTP Client**: Dio for API communication
-- **Storage**: Hive for local data + Shared Preferences
-- **Images**: Cached Network Image for optimization
-- **Maps**: Google Maps Flutter (ready for integration)
-
-### 📱 Platform Support
-- **Android**: Native Android app support
-- **iOS**: Native iOS app support  
-- **Web**: Progressive Web App support
-
-## Development Workflow
-
-### Phase 1: Core User Journey (Priority 1)
-1. Complete Detail Warung Screen
-2. Implement Menu & Harga Screen  
-3. Add Map functionality to Explore Map Screen
-4. Integrate API services for data persistence
-
-### Phase 2: Business Intelligence (Priority 2)
-1. Complete Dashboard Produk Margin
-2. Implement Dashboard Transaksi Volume
-3. Add Category Results with search functionality
-4. Set up analytics and reporting backend
-
-### Phase 3: User Experience (Priority 3)
-1. Complete Favorit Tersimpan functionality
-2. Implement push notifications system
-3. Add user profile management
-4. Enhance UI animations and micro-interactions
-
-### Phase 4: Advanced Management (Priority 4)
-1. Complete all management screens
-2. Add advanced business analytics
-3. Implement multi-tenant restaurant support
-4. Add content management tools
-
-## Quality Assurance
-
-### 📝 Documentation
-- ✅ Complete README with setup instructions
-- ✅ HTML to Flutter mapping documentation
-- ✅ Migration report with detailed progress
-- ✅ Project structure overview
-
-### 🧪 Testing (Ready for Implementation)
-- Unit tests for business logic
-- Widget tests for UI components
-- Integration tests for user flows
-- Performance testing for large datasets
-
-### 🔧 Development Tools
-- ✅ Dart/Flutter linting rules configured
-- ✅ Project structure optimized for team development
-- 📋 CI/CD pipeline ready for setup
-- 📋 Code review templates ready
+Aplikasi mobile-first untuk ekosistem UMKM dan Kuliner Indonesia dengan desain modern berbasis Material 3 (palet terracotta hangat `#AD2C00`, aksen hijau segar `#1B6D24`, background hangat `#FCF9F8`, dan tipografi Plus Jakarta Sans).
 
 ---
 
-**Status**: Foundation Complete (76%) - Ready for Feature Implementation
+## 📁 Struktur Direktori Lengkap (`lib/`)
 
-This structure provides a solid foundation for developing the complete TONGkrongan UMKM Owner application with all HTML prototypes successfully migrated and organized for efficient development workflow.
+```
+lib/
+├── main.dart                                    # App entry point & GoRouter terpadu 29 Screen
+├── theme/
+│   └── app_theme.dart                           # Design Tokens Material 3 (Warna, Font, Spacing)
+├── models/
+│   ├── business.dart                            # Model Profil Usaha, Jam Operasional, Kategori
+│   ├── employee.dart                            # Model Karyawan, Gaji, Bonus, Potongan
+│   ├── financial.dart                           # Model Transaksi, Pembukuan, Arus Kas, Laporan
+│   ├── culinary.dart                            # Model Warung, Menu/Produk, Kategori, Notifikasi
+│   └── advertising.dart                         # Model Kampanye Iklan, Auto Play, Creator, Kalender
+├── services/
+│   ├── business_service.dart                    # Mock Data & Operasi Bisnis Owner
+│   ├── customer_service.dart                    # Mock Data & Pencarian Kuliner Pelanggan
+│   └── advertising_service.dart                 # Mock Data & Engine Penjadwalan Smart Ads
+├── screens/
+│   ├── auth/                                    # Autentikasi & Selektor Peran
+│   │   ├── login_screen.dart                    # 1. Login + Role Quick Switcher ✅
+│   │   └── customer_onboarding_screen.dart      # 1. Onboarding Pelanggan 3-Slide ✅
+│   ├── owner/                                   # PHASE 1: OWNER / UMKM MANAGEMENT (10 Screens)
+│   │   ├── owner_dashboard_screen.dart          # 2. Dashboard Pemilik UMKM ✅
+│   │   ├── transaction_screen.dart              # 3. Layar Riwayat & Filter Transaksi ✅
+│   │   ├── product_management_screen.dart       # 4. Manajemen Produk & Stok ✅
+│   │   ├── investment_expenses_screen.dart      # 5. Manajemen Pengeluaran & Investasi ✅
+│   │   ├── employee_salary_screen.dart          # 6. Gaji & Staf Pegawai ✅
+│   │   ├── bookkeeping_screen.dart              # 7. Pembukuan & Arus Kas ✅
+│   │   ├── financial_report_screen.dart         # 8. Laporan Keuangan Bisnis ✅
+│   │   ├── notifications_screen.dart            # 9. Notifikasi Cerdas Usaha ✅
+│   │   └── profile_settings_screen.dart         # 10. Profil & Pengaturan Usaha ✅
+│   ├── customer/                                # PHASE 2: CULINARY DISCOVERY (9 Screens)
+│   │   ├── customer_onboarding_screen.dart      # 1. Onboarding Kuliner Lokal ✅
+│   │   ├── customer_home_screen.dart            # 2. Beranda Discovery & Radius Filter ✅
+│   │   ├── explore_map_screen.dart              # 3. Peta Interaktif & Radius Coverage ✅
+│   │   ├── category_results_screen.dart         # 4. Hasil Kategori Kuliner & Filter ✅
+│   │   ├── detail_warung_screen.dart            # 5. Detail Profil Warung & Tab Navigasi ✅
+│   │   ├── menu_harga_screen.dart               # 6. Buku Menu & Ketersediaan Harga ✅
+│   │   ├── favorit_tersimpan_screen.dart        # 7. Tempat Kuliner Favorit Tersimpan ✅
+│   │   ├── notifikasi_pelanggan_screen.dart     # 8. Notifikasi Promo & Warung Buka ✅
+│   │   └── customer_profile_screen.dart         # 9. Profil Pengguna & Riwayat Pencarian ✅
+│   └── advertising/                             # PHASE 3: SMART ADVERTISING (10 Screens)
+│       ├── advertising_dashboard_screen.dart    # 1. Dashboard Utama Iklan Multi-Channel ✅
+│       ├── my_campaigns_screen.dart             # 2. Daftar & Kontrol Kampanye Iklan ✅
+│       ├── create_campaign_screen.dart          # 3. Wizard 10 Langkah Pembuatan Iklan ✅
+│       ├── auto_play_campaign_screen.dart       # 4. Otomasi AUTO PLAY Terjadwal 3x/Hari ✅
+│       ├── advertising_calendar_screen.dart     # 5. Kalender Jadwal Publikasi Promosi ✅
+│       ├── platform_management_screen.dart      # 6. Integrasi Akun IG, TikTok, Facebook ✅
+│       ├── creator_marketplace_screen.dart      # 7. Marketplace Food Vlogger & Influencer ✅
+│       ├── creator_detail_screen.dart           # 8. Profil Kreator & Paket Promosi ✅
+│       ├── advertising_analytics_screen.dart    # 9. Analitik Performa, ROI & Distribusi ✅
+│       └── campaign_detail_screen.dart          # 10. Detail Metrik & Edit Kampanye ✅
+└── widgets/
+    ├── common/
+    │   └── role_switcher.dart                   # Modal Bottom Sheet Pemilih Mode Peran
+    ├── owner/
+    │   ├── bottom_navigation.dart               # Navigasi Bawah Owner (5 Tab)
+    │   ├── kpi_card.dart                        # Kartu Metrik Utama
+    │   ├── insight_card.dart                    # Kartu Insight Bisnis
+    │   ├── period_selector.dart                 # Pemilih Rentang Waktu
+    │   └── revenue_chart.dart                   # Grafik Pendapatan
+    ├── customer/
+    │   ├── customer_bottom_navigation.dart      # Navigasi Bawah Pelanggan (5 Tab)
+    │   ├── business_card.dart                   # Kartu Warung & Resto
+    │   └── category_chip.dart                   # Chip Kategori Kuliner
+    └── advertising/
+        └── ads_bottom_navigation.dart           # Navigasi Bawah Smart Ads (5 Tab)
+```
+
+---
+
+## 🚀 Fitur Utama
+
+1. **Role Switcher Terpadu**: Pengguna atau penguji dapat berpindah peran kapan saja melalui ikon swap di header atau tombol pintas di halaman login:
+   - 🏪 **Mode Pemilik UMKM** (`/owner-dashboard`)
+   - 🍜 **Mode Pelanggan Kuliner** (`/customer-home`)
+   - 📢 **Mode Smart Advertising** (`/advertising-dashboard`)
+2. **Auto Play Campaign Engine**: Fitur promosi otomatis terjadwal (08:00, 14:00, 19:00) ke multi-platform (Instagram, TikTok, Facebook) dengan radius target cerdas.
+3. **Food Vlogger & Influencer Marketplace**: Kolaborasi langsung dengan kreator kuliner lokal untuk mempromosikan menu unggulan UMKM.

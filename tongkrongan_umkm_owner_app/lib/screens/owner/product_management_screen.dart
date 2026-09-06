@@ -119,7 +119,7 @@ class _ProductManagementScreenState extends State<ProductManagementScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.outline.withOpacity(0.3)),
+        border: Border.all(color: AppTheme.outline.withValues(alpha: 0.3)),
       ),
       child: TextField(
         controller: _searchController,
@@ -206,7 +206,7 @@ class _ProductManagementScreenState extends State<ProductManagementScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -221,16 +221,16 @@ class _ProductManagementScreenState extends State<ProductManagementScreen> {
               Container(
                 height: 120,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.surfaceContainer,
-                  borderRadius: const BorderRadius.vertical(
+                  borderRadius: BorderRadius.vertical(
                     top: Radius.circular(16),
                   ),
                 ),
                 child: Icon(
                   _getProductIcon(product.category),
                   size: 48,
-                  color: AppTheme.primary.withOpacity(0.6),
+                  color: AppTheme.primary.withValues(alpha: 0.6),
                 ),
               ),
               Positioned(

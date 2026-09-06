@@ -6,6 +6,8 @@ import 'package:tongkrongan_umkm_owner_app/widgets/owner/revenue_chart.dart';
 import 'package:tongkrongan_umkm_owner_app/widgets/owner/insight_card.dart';
 import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
 import 'package:intl/intl.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/common/role_switcher.dart';
 
 class OwnerDashboardScreen extends StatefulWidget {
   const OwnerDashboardScreen({super.key});
@@ -75,7 +77,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: AppTheme.onSurface.withOpacity(0.1),
+                  color: AppTheme.onSurface.withValues(alpha: 0.1),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -112,22 +114,31 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
             ),
           ),
           
-          // Notification Bell
+          // Role Switcher & Notification Bell
           IconButton(
-            onPressed: () {},
+            onPressed: () => RoleSwitcherSheet.show(context),
+            tooltip: 'Ganti Mode Peran',
+            icon: const Icon(
+              Icons.swap_horiz_rounded,
+              size: 26,
+              color: AppTheme.primary,
+            ),
+          ),
+          IconButton(
+            onPressed: () => context.go('/notifications'),
             icon: Stack(
               children: [
                 const Icon(
                   Icons.notifications_outlined,
-                  size: 28,
+                  size: 26,
                   color: AppTheme.onSurface,
                 ),
                 Positioned(
                   right: 4,
                   top: 4,
                   child: Container(
-                    width: 12,
-                    height: 12,
+                    width: 10,
+                    height: 10,
                     decoration: BoxDecoration(
                       color: AppTheme.error,
                       shape: BoxShape.circle,
@@ -148,9 +159,9 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
       margin: const EdgeInsets.symmetric(horizontal: AppTheme.marginMobile),
       padding: const EdgeInsets.symmetric(horizontal: AppTheme.spaceMd, vertical: AppTheme.spaceSm),
       decoration: BoxDecoration(
-        color: AppTheme.secondaryContainer.withOpacity(0.2),
+        color: AppTheme.secondaryContainer.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.secondary.withOpacity(0.3)),
+        border: Border.all(color: AppTheme.secondary.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
@@ -194,7 +205,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                   value: currencyFormat.format(2450000),
                   icon: Icons.trending_up,
                   iconColor: AppTheme.secondary,
-                  backgroundColor: AppTheme.secondaryContainer.withOpacity(0.2),
+                  backgroundColor: AppTheme.secondaryContainer.withValues(alpha: 0.2),
                 ),
               ),
               const SizedBox(width: AppTheme.spaceMd),
@@ -204,7 +215,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                   value: '87',
                   icon: Icons.receipt_long,
                   iconColor: AppTheme.primary,
-                  backgroundColor: AppTheme.primaryFixed.withOpacity(0.3),
+                  backgroundColor: AppTheme.primaryFixed.withValues(alpha: 0.3),
                 ),
               ),
             ],
@@ -218,7 +229,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                   value: '76',
                   icon: Icons.people,
                   iconColor: AppTheme.tertiary,
-                  backgroundColor: AppTheme.tertiaryFixed.withOpacity(0.3),
+                  backgroundColor: AppTheme.tertiaryFixed.withValues(alpha: 0.3),
                 ),
               ),
               const SizedBox(width: AppTheme.spaceMd),
@@ -228,7 +239,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                   value: '143',
                   icon: Icons.inventory,
                   iconColor: AppTheme.secondary,
-                  backgroundColor: AppTheme.secondaryContainer.withOpacity(0.2),
+                  backgroundColor: AppTheme.secondaryContainer.withValues(alpha: 0.2),
                 ),
               ),
             ],
@@ -262,7 +273,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                 title: 'Produk Terlaris',
                 description: 'Es Kopi Susu adalah produk terlaris hari ini.',
                 value: '32 porsi',
-                backgroundColor: AppTheme.errorContainer.withOpacity(0.2),
+                backgroundColor: AppTheme.errorContainer.withValues(alpha: 0.2),
               ),
               const SizedBox(height: AppTheme.spaceMd),
               InsightCard(
@@ -271,7 +282,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                 title: 'Perlu Perhatian',
                 description: 'Penjualan Roti Bakar turun 18% dibanding minggu lalu.',
                 value: '12 porsi',
-                backgroundColor: AppTheme.tertiaryContainer.withOpacity(0.2),
+                backgroundColor: AppTheme.tertiaryContainer.withValues(alpha: 0.2),
               ),
               const SizedBox(height: AppTheme.spaceMd),
               InsightCard(
@@ -280,7 +291,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
                 title: 'Laba Bersih',
                 description: 'Keuntungan bersih hari ini meningkat 12%.',
                 value: 'Rp 1.250.000',
-                backgroundColor: AppTheme.secondaryContainer.withOpacity(0.2),
+                backgroundColor: AppTheme.secondaryContainer.withValues(alpha: 0.2),
               ),
             ],
           ),

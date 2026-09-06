@@ -1,6 +1,6 @@
-import '../models/business.dart';
-import '../models/employee.dart';
-import '../models/financial.dart';
+import 'package:tongkrongan_umkm_owner_app/models/business.dart';
+import 'package:tongkrongan_umkm_owner_app/models/employee.dart';
+import 'package:tongkrongan_umkm_owner_app/models/financial.dart';
 
 class BusinessService {
   static final BusinessService _instance = BusinessService._internal();

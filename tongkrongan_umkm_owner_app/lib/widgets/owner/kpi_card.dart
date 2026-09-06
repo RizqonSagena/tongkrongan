@@ -9,12 +9,7 @@ class KPICard extends StatelessWidget {
   final Color backgroundColor;
 
   const KPICard({
-    super.key,
-    required this.title,
-    required this.value,
-    required this.icon,
-    required this.iconColor,
-    required this.backgroundColor,
+    required this.title, required this.value, required this.icon, required this.iconColor, required this.backgroundColor, super.key,
   });
 
   @override
@@ -27,7 +22,7 @@ class KPICard extends StatelessWidget {
         border: Border.all(color: backgroundColor),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.onSurface.withOpacity(0.05),
+            color: AppTheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

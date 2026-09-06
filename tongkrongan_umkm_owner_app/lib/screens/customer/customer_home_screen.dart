@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../widgets/customer/business_card.dart';
-import '../../widgets/customer/category_chip.dart';
-import '../../widgets/customer/customer_bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/theme/app_theme.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/common/role_switcher.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/customer/business_card.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/customer/category_chip.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/customer/customer_bottom_navigation.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
@@ -152,12 +154,12 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(8),
+                  color: AppTheme.secondaryContainer,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(
-                  Icons.store,
-                  color: Colors.blue[800],
+                child: const Icon(
+                  Icons.restaurant,
+                  color: AppTheme.secondary,
                   size: 24,
                 ),
               ),
@@ -166,17 +168,22 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 child: Text(
                   'Selamat datang di TONGkrongan',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: AppTheme.onSurface,
                   ),
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => RoleSwitcherSheet.show(context),
+                tooltip: 'Ganti Mode Peran',
+                icon: const Icon(Icons.swap_horiz_rounded, color: AppTheme.secondary),
+              ),
+              IconButton(
+                onPressed: () => context.go('/customer-notifications'),
                 icon: const Icon(Icons.notifications_outlined),
                 style: IconButton.styleFrom(
-                  backgroundColor: Colors.grey[100],
+                  backgroundColor: AppTheme.surfaceContainerLow,
                 ),
               ),
             ],
@@ -334,7 +341,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                           ? ''
                           : category.name;
                     });
-                    context.push('/category-results', extra: category.name);
+                    context.go('/category-results/${category.name}');
                   },
                 );
               },
@@ -378,7 +385,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
             itemBuilder: (context, index) {
               return BusinessCard(
                 business: businesses[index],
-                onTap: () => context.push('/business-detail', extra: businesses[index].id),
+                onTap: () => context.go('/business-detail/${businesses[index].id}'),
               );
             },
           ),
@@ -424,7 +431,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   height: 150,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                   ),
                 ),
               ),
@@ -508,7 +515,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               child: BusinessCard(
                 business: business,
                 isHorizontal: true,
-                onTap: () => context.push('/business-detail', extra: business.id),
+                onTap: () => context.go('/business-detail/${business.id}'),
               ),
             );
           },

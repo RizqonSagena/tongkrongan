@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/owner/bottom_navigation.dart';
+import 'package:tongkrongan_umkm_owner_app/widgets/owner/bottom_navigation.dart';
 
 class EmployeeSalaryScreen extends StatefulWidget {
   const EmployeeSalaryScreen({super.key});
@@ -166,7 +166,7 @@ class _EmployeeSalaryScreenState extends State<EmployeeSalaryScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
     );
   }
 
@@ -190,7 +190,7 @@ class _EmployeeSalaryScreenState extends State<EmployeeSalaryScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(icon, color: color, size: 24),
@@ -440,7 +440,7 @@ class _EmployeeSalaryScreenState extends State<EmployeeSalaryScreen> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                for (var employee in employees) {
+                for (final employee in employees) {
                   if (!employee.isPaid) {
                     employee.isPaid = true;
                   }
