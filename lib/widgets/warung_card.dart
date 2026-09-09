@@ -265,9 +265,9 @@ class WarungCard extends StatelessWidget {
                     color: AppTheme.primary,
                   ),
                   SizedBox(width: 3),
-                  const Text(
+                  Text(
                     'Pesan Langsung di Tempat',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: AppTheme.primary,
