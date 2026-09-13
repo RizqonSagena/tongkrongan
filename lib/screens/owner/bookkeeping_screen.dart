@@ -150,7 +150,7 @@ class _BookkeepingScreenState extends State<BookkeepingScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 3),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/bookkeeping'),
     );
   }
 

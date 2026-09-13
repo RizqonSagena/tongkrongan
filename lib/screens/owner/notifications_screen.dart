@@ -156,7 +156,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           _buildNotificationList(readNotifications),
         ],
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/notifications'),
       floatingActionButton: unreadNotifications.isNotEmpty
           ? FloatingActionButton.extended(
               onPressed: _markAllAsRead,

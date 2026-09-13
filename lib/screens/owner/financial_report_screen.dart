@@ -160,7 +160,7 @@ class _FinancialReportScreenState extends State<FinancialReportScreen>
           ),
         ],
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/reports'),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _exportReport(),
         backgroundColor: Colors.blue[600],

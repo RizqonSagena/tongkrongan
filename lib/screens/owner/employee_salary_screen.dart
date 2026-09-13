@@ -166,7 +166,7 @@ class _EmployeeSalaryScreenState extends State<EmployeeSalaryScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/employees'),
     );
   }
 

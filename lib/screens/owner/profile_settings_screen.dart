@@ -109,7 +109,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 4),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/profile'),
     );
   }
 

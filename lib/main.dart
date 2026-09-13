@@ -16,6 +16,9 @@ import 'package:tongkrongan_umkm_owner_app/screens/owner/bookkeeping_screen.dart
 import 'package:tongkrongan_umkm_owner_app/screens/owner/financial_report_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/owner/notifications_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/owner/profile_settings_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/hpp_management_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/admin_chat_list_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/admin_chat_screen.dart';
 
 // PHASE 2: CUSTOMER / CULINARY DISCOVERY EXPERIENCE
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_onboarding_screen.dart';
@@ -119,6 +122,21 @@ final GoRouter _router = GoRouter(
       path: '/profile',
       name: 'profile',
       builder: (context, state) => const ProfileSettingsScreen(),
+    ),
+    GoRoute(
+      path: '/hpp',
+      name: 'hpp',
+      builder: (context, state) => const HPPManagementScreen(),
+    ),
+    GoRoute(
+      path: '/admin-chat-list',
+      name: 'admin-chat-list',
+      builder: (context, state) => const AdminChatListScreen(),
+    ),
+    GoRoute(
+      path: '/admin-chat',
+      name: 'admin-chat',
+      builder: (context, state) => const AdminChatScreen(),
     ),
 
     // ==========================================

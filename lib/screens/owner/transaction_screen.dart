@@ -92,7 +92,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 1),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/transactions'),
     );
   }
 

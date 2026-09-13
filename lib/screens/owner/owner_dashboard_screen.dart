@@ -59,7 +59,7 @@ class _OwnerDashboardScreenState extends State<OwnerDashboardScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 0),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/owner-dashboard'),
     );
   }
 

@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:tongkrongan_umkm_owner_app/theme/app_theme.dart';
 
 class OwnerBottomNavigation extends StatelessWidget {
-  final int currentIndex;
+  final String currentRoute;
 
   const OwnerBottomNavigation({
-    required this.currentIndex, super.key,
+    required this.currentRoute, super.key,
   });
 
   @override
@@ -30,38 +30,33 @@ class OwnerBottomNavigation extends StatelessWidget {
             children: [
               _buildNavItem(
                 context,
-                0,
                 Icons.dashboard,
                 'Dashboard',
                 '/owner-dashboard',
               ),
               _buildNavItem(
                 context,
-                1,
                 Icons.receipt_long,
                 'Transaksi',
                 '/transactions',
               ),
               _buildNavItem(
                 context,
-                2,
                 Icons.inventory,
                 'Produk',
                 '/products',
               ),
               _buildNavItem(
                 context,
-                3,
-                Icons.book,
-                'Pembukuan',
-                '/bookkeeping',
+                Icons.calculate,
+                'HPP',
+                '/hpp',
               ),
               _buildNavItem(
                 context,
-                4,
-                Icons.person,
-                'Profile',
-                '/profile',
+                Icons.message,
+                'Chat',
+                '/admin-chat-list',
               ),
             ],
           ),
@@ -72,12 +67,11 @@ class OwnerBottomNavigation extends StatelessWidget {
 
   Widget _buildNavItem(
     BuildContext context,
-    int index,
     IconData icon,
     String label,
     String route,
   ) {
-    final isSelected = currentIndex == index;
+    final isSelected = currentRoute == route;
     
     return Expanded(
       child: GestureDetector(
@@ -112,6 +106,8 @@ class OwnerBottomNavigation extends StatelessWidget {
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

@@ -104,7 +104,7 @@ class _InvestmentExpensesScreenState extends State<InvestmentExpensesScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 3),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/expenses'),
     );
   }
 

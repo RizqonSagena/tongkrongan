@@ -109,7 +109,7 @@ class _ProductManagementScreenState extends State<ProductManagementScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const OwnerBottomNavigation(currentIndex: 2),
+      bottomNavigationBar: const OwnerBottomNavigation(currentRoute: '/products'),
     );
   }
 
