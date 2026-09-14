@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tongkrongan_umkm_owner_app/services/customer_service.dart';
 import 'package:tongkrongan_umkm_owner_app/theme/app_theme.dart';
-import 'package:tongkrongan_umkm_owner_app/widgets/common/role_switcher.dart';
-import 'package:tongkrongan_umkm_owner_app/widgets/customer/customer_bottom_navigation.dart';
 
 class CustomerProfileScreen extends StatefulWidget {
   const CustomerProfileScreen({super.key});
@@ -13,304 +10,477 @@ class CustomerProfileScreen extends StatefulWidget {
 }
 
 class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
-  bool _notifPromo = true;
-  bool _notifNearby = true;
-  bool _notifFavorite = true;
+  bool _isEditMode = false;
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _phoneController;
+
+  // Mock user data
+  final String _userName = 'Ahmad Rizki';
+  final String _userEmail = 'ahmad.rizki@email.com';
+  final String _userPhone = '+62 812-3456-7890';
+  final String _memberSince = '15 Mei 2024';
+  final int _totalReservations = 12;
+  final int _totalReviews = 8;
+  final int _favoriteKedai = 5;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: _userName);
+    _emailController = TextEditingController(text: _userEmail);
+    _phoneController = TextEditingController(text: _userPhone);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final favoritesCount = CustomerService().getFavorites().length;
-
     return Scaffold(
       backgroundColor: AppTheme.surface,
       appBar: AppBar(
-        title: const Text('Profil Saya', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-        backgroundColor: AppTheme.surface,
+        title: const Text('Profil Saya'),
+        centerTitle: true,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.swap_horiz, color: AppTheme.primary),
-            tooltip: 'Ganti Mode',
-            onPressed: () => RoleSwitcherSheet.show(context),
-          ),
+          if (!_isEditMode)
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isEditMode = true;
+                  });
+                },
+                icon: const Icon(Icons.edit),
+              ),
+            ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            // User Card
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppTheme.surfaceContainerLowest,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.surfaceVariant),
-              ),
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 32,
-                    backgroundColor: AppTheme.secondaryContainer,
-                    child: Icon(Icons.person, size: 36, color: AppTheme.secondary),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Budi Santoso',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppTheme.onSurface),
-                        ),
-                        const SizedBox(height: 2),
-                        const Text(
-                          '0812-9876-5432',
-                          style: TextStyle(fontSize: 12, color: AppTheme.onSurfaceVariant),
-                        ),
-                        const SizedBox(height: 6),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: AppTheme.secondaryContainer,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Text(
-                            '🍜 Foodie Explorer Level 3',
-                            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppTheme.secondary),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.edit_outlined, color: AppTheme.outline),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
+            // Profile Header
+            _buildProfileHeader(),
 
-            // Quick Stats
-            Row(
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () => context.go('/customer-favorites'),
-                    borderRadius: BorderRadius.circular(14),
-                    child: Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: AppTheme.surfaceContainerLow,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Column(
-                        children: [
-                          const Icon(Icons.favorite, color: Colors.redAccent, size: 24),
-                          const SizedBox(height: 6),
-                          Text(
-                            '$favoritesCount',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          const Text(
-                            'Tempat Favorit',
-                            style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+            const SizedBox(height: 32),
+
+            // Profile Information
+            _buildProfileInfo(),
+
+            const SizedBox(height: 32),
+
+            // Statistics
+            _buildStatistics(),
+
+            const SizedBox(height: 32),
+
+            // Menu Items
+            _buildMenuItems(),
+
+            const SizedBox(height: 32),
+
+            // Logout Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: _logout,
+                icon: const Icon(Icons.logout),
+                label: const Text('Keluar'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: AppTheme.surfaceContainerLow,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: const Column(
-                      children: [
-                        Icon(Icons.rate_review_outlined, color: AppTheme.primary, size: 24),
-                        SizedBox(height: 6),
-                        Text(
-                          '14',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Ulasan Diberikan',
-                          style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: AppTheme.surfaceContainerLow,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: const Column(
-                      children: [
-                        Icon(Icons.history, color: Color(0xFF924700), size: 24),
-                        SizedBox(height: 6),
-                        Text(
-                          '28',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Kunjungan',
-                          style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
+
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
 
-            // Riwayat Pencarian
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppTheme.surfaceContainerLowest,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.surfaceVariant),
+  Widget _buildProfileHeader() {
+    return Center(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 60,
+                backgroundColor: AppTheme.primary.withOpacity(0.2),
+                child: Text(
+                  _userName[0],
+                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    color: AppTheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Riwayat Pencarian Terakhir',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Riwayat dibersihkan.')),
-                          );
-                        },
-                        child: const Text('Hapus Semua', style: TextStyle(fontSize: 11, color: AppTheme.primary)),
-                      ),
-                    ],
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppTheme.primary,
+                    shape: BoxShape.circle,
                   ),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      _buildHistoryChip('Kopi Susu Aren'),
-                      _buildHistoryChip('Sambal Bakar'),
-                      _buildHistoryChip('Seafood Tebet'),
-                      _buildHistoryChip('Bakso Urat'),
-                      _buildHistoryChip('Roti Bakar'),
-                    ],
+                  child: const Icon(
+                    Icons.camera_alt,
+                    size: 20,
+                    color: Colors.white,
                   ),
-                ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(
+            _userName,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Member sejak $_memberSince',
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Colors.grey.shade600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Informasi Akun',
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 16),
+        _buildInfoField(
+          label: 'Nama Lengkap',
+          value: _userName,
+          controller: _nameController,
+        ),
+        const SizedBox(height: 12),
+        _buildInfoField(
+          label: 'Email',
+          value: _userEmail,
+          controller: _emailController,
+        ),
+        const SizedBox(height: 12),
+        _buildInfoField(
+          label: 'Nomor Telepon',
+          value: _userPhone,
+          controller: _phoneController,
+        ),
+        if (_isEditMode) ...[
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: () {
+                    setState(() {
+                      _isEditMode = false;
+                      _nameController.text = _userName;
+                      _emailController.text = _userEmail;
+                      _phoneController.text = _userPhone;
+                    });
+                  },
+                  child: const Text('Batal'),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: _saveProfile,
+                  child: const Text('Simpan'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildInfoField({
+    required String label,
+    required String value,
+    required TextEditingController controller,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.grey.shade300,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 4),
+          if (_isEditMode)
+            TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+              ),
+            )
+          else
+            Text(
+              value,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
 
-            // Pengaturan Notifikasi
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppTheme.surfaceContainerLowest,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.surfaceVariant),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Pengaturan Notifikasi',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: const Text('Promo Kuliner Sekitar', style: TextStyle(fontSize: 13)),
-                    subtitle: const Text('Dapatkan update diskon di radius terdekat', style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant)),
-                    value: _notifPromo,
-                    activeThumbColor: AppTheme.primary,
-                    onChanged: (v) => setState(() => _notifPromo = v),
-                  ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: const Text('Peringatan Warung Buka', style: TextStyle(fontSize: 13)),
-                    subtitle: const Text('Notifikasi ketika warung favorit Anda mulai buka', style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant)),
-                    value: _notifFavorite,
-                    activeThumbColor: AppTheme.primary,
-                    onChanged: (v) => setState(() => _notifFavorite = v),
-                  ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: const Text('Kuliner Trending', style: TextStyle(fontSize: 13)),
-                    subtitle: const Text('Rekomendasi tempat makan viral harian', style: TextStyle(fontSize: 11, color: AppTheme.onSurfaceVariant)),
-                    value: _notifNearby,
-                    activeThumbColor: AppTheme.primary,
-                    onChanged: (v) => setState(() => _notifNearby = v),
-                  ),
-                ],
+  Widget _buildStatistics() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Statistik',
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(
+              child: _buildStatCard(
+                icon: Icons.bookmark,
+                label: 'Favorit',
+                value: '$_favoriteKedai',
               ),
             ),
-            const SizedBox(height: 20),
-
-            // Ganti Mode Peran Banner
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppTheme.primaryFixed,
-                borderRadius: BorderRadius.circular(16),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildStatCard(
+                icon: Icons.calendar_today,
+                label: 'Reservasi',
+                value: '$_totalReservations',
               ),
-              child: Row(
-                children: [
-                  const Icon(Icons.storefront, size: 32, color: AppTheme.onPrimaryFixed),
-                  const SizedBox(width: 12),
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Punya Usaha Kuliner?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: AppTheme.onPrimaryFixed)),
-                        Text('Kelola warung & toko Anda di TONGkrongan Owner.', style: TextStyle(fontSize: 11, color: AppTheme.onPrimaryFixedVariant)),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => context.go('/owner-dashboard'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.primary,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    ),
-                    child: const Text('Mode Owner', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
-                  ),
-                ],
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildStatCard(
+                icon: Icons.star,
+                label: 'Ulasan',
+                value: '$_totalReviews',
               ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentIndex: 4),
+      ],
     );
   }
 
-  Widget _buildHistoryChip(String label) {
-    return Chip(
-      label: Text(label, style: const TextStyle(fontSize: 12)),
-      backgroundColor: AppTheme.surfaceContainerLow,
-      deleteIcon: const Icon(Icons.close, size: 14),
-      onDeleted: () {},
+  Widget _buildStatCard({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      decoration: BoxDecoration(
+        color: AppTheme.primary.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppTheme.primary.withOpacity(0.3),
+        ),
+      ),
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            color: AppTheme.primary,
+            size: 28,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppTheme.primary,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Colors.grey.shade600,
+            ),
+          ),
+        ],
+      ),
     );
+  }
+
+  Widget _buildMenuItems() {
+    final menuItems = [
+      {
+        'icon': Icons.bookmark,
+        'label': 'Kedai Favorit',
+        'route': '/customer-favorites',
+      },
+      {
+        'icon': Icons.calendar_today,
+        'label': 'Riwayat Reservasi',
+        'route': '/customer-reservations-history',
+      },
+      {
+        'icon': Icons.star,
+        'label': 'Ulasan Saya',
+        'route': '/customer-reviews',
+      },
+      {
+        'icon': Icons.message,
+        'label': 'Chat dengan Pengelola',
+        'route': '/management-chat',
+      },
+      {
+        'icon': Icons.settings,
+        'label': 'Pengaturan',
+        'route': '/customer-settings',
+      },
+      {
+        'icon': Icons.info,
+        'label': 'Tentang TONGkrongan',
+        'route': '/customer-about',
+      },
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Menu Lainnya',
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 12),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: menuItems.length,
+          separatorBuilder: (context, index) => Divider(
+            color: Colors.grey.shade200,
+            height: 1,
+          ),
+          itemBuilder: (context, index) {
+            final item = menuItems[index];
+            return ListTile(
+              leading: Icon(
+                item['icon'] as IconData,
+                color: AppTheme.primary,
+              ),
+              title: Text(item['label'] as String),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                if (item['route'] == '/customer-reservations-history' ||
+                    item['route'] == '/customer-reviews' ||
+                    item['route'] == '/customer-settings' ||
+                    item['route'] == '/customer-about') {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('${item['label']} - coming soon'),
+                    ),
+                  );
+                } else {
+                  context.go(item['route'] as String);
+                }
+              },
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  void _saveProfile() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Profil berhasil diperbarui'),
+        backgroundColor: Colors.green,
+      ),
+    );
+
+    setState(() {
+      _isEditMode = false;
+    });
+  }
+
+  void _logout() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Keluar dari Akun?'),
+        content: const Text(
+          'Apakah Anda yakin ingin keluar dari akun ini?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Anda telah keluar'),
+                  backgroundColor: Colors.green,
+                ),
+              );
+              // Navigate to login
+              Future.delayed(const Duration(milliseconds: 500), () {
+                context.go('/customer-login');
+              });
+            },
+            child: const Text('Keluar'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    super.dispose();
   }
 }

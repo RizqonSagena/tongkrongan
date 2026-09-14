@@ -20,6 +20,16 @@ import 'package:tongkrongan_umkm_owner_app/screens/owner/hpp_management_screen.d
 import 'package:tongkrongan_umkm_owner_app/screens/owner/admin_chat_list_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/owner/admin_chat_screen.dart';
 
+// PHASE 1B: OWNER ENHANCED FEATURES (Dashboard Enhancement)
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_dashboard_enhanced_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_sales_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_financial_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_product_management_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_hpp_expense_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_analytics_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_order_queue_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/owner/owner_chat_screen.dart';
+
 // PHASE 2: CUSTOMER / CULINARY DISCOVERY EXPERIENCE
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_onboarding_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
@@ -30,6 +40,14 @@ import 'package:tongkrongan_umkm_owner_app/screens/customer/menu_harga_screen.da
 import 'package:tongkrongan_umkm_owner_app/screens/customer/favorit_tersimpan_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/customer/notifikasi_pelanggan_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_profile_screen.dart';
+
+// PHASE 2B: CUSTOMER AUTHENTICATION & NEW FEATURES
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_login_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_register_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_favorites_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/kedai_detail_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/management_chat_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_reservation_screen.dart';
 
 // PHASE 3: SMART ADVERTISING PLATFORM
 import 'package:tongkrongan_umkm_owner_app/screens/advertising/advertising_dashboard_screen.dart';
@@ -82,6 +100,56 @@ final GoRouter _router = GoRouter(
       path: '/owner-dashboard',
       name: 'owner-dashboard',
       builder: (context, state) => const OwnerDashboardScreen(),
+    ),
+    GoRoute(
+      path: '/owner-dashboard-enhanced',
+      name: 'owner-dashboard-enhanced',
+      builder: (context, state) => const OwnerDashboardEnhancedScreen(),
+    ),
+    GoRoute(
+      path: '/owner-sales',
+      name: 'owner-sales',
+      builder: (context, state) => const OwnerSalesScreen(),
+    ),
+    GoRoute(
+      path: '/owner-financial',
+      name: 'owner-financial',
+      builder: (context, state) => const OwnerFinancialScreen(),
+    ),
+    GoRoute(
+      path: '/owner-products',
+      name: 'owner-products',
+      builder: (context, state) => const OwnerProductManagementScreen(),
+    ),
+    GoRoute(
+      path: '/owner-hpp',
+      name: 'owner-hpp',
+      builder: (context, state) => const OwnerHPPExpenseScreen(),
+    ),
+    GoRoute(
+      path: '/owner-analytics',
+      name: 'owner-analytics',
+      builder: (context, state) => const OwnerAnalyticsScreen(),
+    ),
+    GoRoute(
+      path: '/owner-order-queue',
+      name: 'owner-order-queue',
+      builder: (context, state) => const OwnerOrderQueueScreen(),
+    ),
+    GoRoute(
+      path: '/owner-chat',
+      name: 'owner-chat',
+      builder: (context, state) => const OwnerChatScreen(),
+    ),
+    GoRoute(
+      path: '/owner-expenses',
+      name: 'owner-expenses',
+      builder: (context, state) => const OwnerHPPExpenseScreen(),
+    ),
+    GoRoute(
+      path: '/owner-transactions',
+      name: 'owner-transactions',
+      builder: (context, state) => const OwnerSalesScreen(),
     ),
     GoRoute(
       path: '/transactions',
@@ -148,9 +216,55 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => const CustomerOnboardingScreen(),
     ),
     GoRoute(
+      path: '/customer-login',
+      name: 'customer-login',
+      builder: (context, state) => const CustomerLoginScreen(),
+    ),
+    GoRoute(
+      path: '/customer-register',
+      name: 'customer-register',
+      builder: (context, state) => const CustomerRegisterScreen(),
+    ),
+    GoRoute(
       path: '/customer-home',
       name: 'customer-home',
       builder: (context, state) => const CustomerHomeScreen(),
+    ),
+    GoRoute(
+      path: '/customer-favorites',
+      name: 'customer-favorites',
+      builder: (context, state) => const CustomerFavoritesScreen(),
+    ),
+    GoRoute(
+      path: '/customer-profile',
+      name: 'customer-profile',
+      builder: (context, state) => const CustomerProfileScreen(),
+    ),
+    GoRoute(
+      path: '/management-chat',
+      name: 'management-chat',
+      builder: (context, state) => const ManagementChatScreen(),
+    ),
+    GoRoute(
+      path: '/management-chat/:kedaiId',
+      name: 'management-chat-kedai',
+      builder: (context, state) => ManagementChatScreen(
+        kedaiId: state.pathParameters['kedaiId'],
+      ),
+    ),
+    GoRoute(
+      path: '/customer-reservation/:kedaiId',
+      name: 'customer-reservation',
+      builder: (context, state) => CustomerReservationScreen(
+        kedaiId: state.pathParameters['kedaiId'],
+      ),
+    ),
+    GoRoute(
+      path: '/kedai-detail/:id',
+      name: 'kedai-detail',
+      builder: (context, state) => KedaiDetailScreen(
+        kedaiId: state.pathParameters['id'] ?? '',
+      ),
     ),
     GoRoute(
       path: '/explore-map',
@@ -179,19 +293,9 @@ final GoRouter _router = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/customer-favorites',
-      name: 'customer-favorites',
-      builder: (context, state) => const FavoritTersimpanScreen(),
-    ),
-    GoRoute(
       path: '/customer-notifications',
       name: 'customer-notifications',
       builder: (context, state) => const NotifikasiPelangganScreen(),
-    ),
-    GoRoute(
-      path: '/customer-profile',
-      name: 'customer-profile',
-      builder: (context, state) => const CustomerProfileScreen(),
     ),
 
     // ==========================================
