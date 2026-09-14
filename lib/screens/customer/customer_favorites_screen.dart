@@ -359,7 +359,7 @@ class _CustomerFavoritesScreenState extends State<CustomerFavoritesScreen> {
             ),
         ],
       ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentRoute: '/customer-favorites'),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/customer-favorites'),
     );
   }
 
@@ -621,7 +621,7 @@ class _CustomerFavoritesScreenState extends State<CustomerFavoritesScreen> {
             ),
           ],
         );
-      ),
+      },
     );
   }
 

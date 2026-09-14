@@ -101,7 +101,7 @@ class NotifikasiPelangganScreen extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentIndex: 3),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/customer-notifications'),
     );
   }
 }

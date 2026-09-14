@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tongkrongan_umkm_owner_app/models/business.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
 
 class BusinessCard extends StatelessWidget {

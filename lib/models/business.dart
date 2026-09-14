@@ -11,6 +11,13 @@ class Business {
   final BusinessHours operatingHours;
   final DateTime createdAt;
   final DateTime? updatedAt;
+  
+  // Additional properties for UI
+  final bool isOpen;
+  final String? promoText;
+  final double rating;
+  final String distance;
+  final double startingPrice;
 
   Business({
     required this.id,
@@ -19,10 +26,17 @@ class Business {
     required this.description,
     required this.address,
     required this.phone,
-    required this.operatingHours, required this.createdAt, this.email,
+    required this.operatingHours, 
+    required this.createdAt, 
+    this.email,
     this.logo,
     this.status = BusinessStatus.active,
     this.updatedAt,
+    this.isOpen = true,
+    this.promoText,
+    this.rating = 4.5,
+    this.distance = "0.5 km",
+    this.startingPrice = 15000,
   });
 
   Business copyWith({

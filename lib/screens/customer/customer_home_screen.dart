@@ -356,7 +356,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentRoute: '/customer-home'),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/customer-home'),
     );
   }
 

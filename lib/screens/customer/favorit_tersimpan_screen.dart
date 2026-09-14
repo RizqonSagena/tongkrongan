@@ -69,7 +69,7 @@ class _FavoritTersimpanScreenState extends State<FavoritTersimpanScreen> {
                 return _buildFavoriteCard(item);
               },
             ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentIndex: 2),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/customer-favorites'),
     );
   }
 

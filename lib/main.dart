@@ -61,6 +61,17 @@ import 'package:tongkrongan_umkm_owner_app/screens/advertising/creator_detail_sc
 import 'package:tongkrongan_umkm_owner_app/screens/advertising/advertising_analytics_screen.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/advertising/campaign_detail_screen.dart';
 
+// PHASE 2.5: ADMIN / OPERATOR MANAGEMENT SYSTEM (10 Screens)
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_login_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_dashboard_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_kedai_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_products_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_content_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_promo_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_appointments_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_chat_support_screen.dart';
+import 'package:tongkrongan_umkm_owner_app/screens/admin/admin_social_media_screen.dart';
+
 void main() {
   runApp(
     const ProviderScope(
@@ -249,14 +260,14 @@ final GoRouter _router = GoRouter(
       path: '/management-chat/:kedaiId',
       name: 'management-chat-kedai',
       builder: (context, state) => ManagementChatScreen(
-        kedaiId: state.pathParameters['kedaiId'],
+        kedaiId: state.pathParameters['kedaiId'] ?? '',
       ),
     ),
     GoRoute(
       path: '/customer-reservation/:kedaiId',
       name: 'customer-reservation',
       builder: (context, state) => CustomerReservationScreen(
-        kedaiId: state.pathParameters['kedaiId'],
+        kedaiId: state.pathParameters['kedaiId'] ?? '',
       ),
     ),
     GoRoute(
@@ -354,6 +365,55 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => CampaignDetailScreen(
         campaignId: state.pathParameters['id'] ?? '',
       ),
+    ),
+
+    // ==========================================
+    // PHASE 2.5: ADMIN / OPERATOR MANAGEMENT (10 Screens)
+    // ==========================================
+    GoRoute(
+      path: '/admin-login',
+      name: 'admin-login',
+      builder: (context, state) => const AdminLoginScreen(),
+    ),
+    GoRoute(
+      path: '/admin-dashboard',
+      name: 'admin-dashboard',
+      builder: (context, state) => const AdminDashboardScreen(),
+    ),
+    GoRoute(
+      path: '/admin-kedai',
+      name: 'admin-kedai',
+      builder: (context, state) => const AdminKedaiScreen(),
+    ),
+    GoRoute(
+      path: '/admin-products',
+      name: 'admin-products',
+      builder: (context, state) => const AdminProductsScreen(),
+    ),
+    GoRoute(
+      path: '/admin-content',
+      name: 'admin-content',
+      builder: (context, state) => const AdminContentScreen(),
+    ),
+    GoRoute(
+      path: '/admin-promo',
+      name: 'admin-promo',
+      builder: (context, state) => const AdminPromoScreen(),
+    ),
+    GoRoute(
+      path: '/admin-appointments',
+      name: 'admin-appointments',
+      builder: (context, state) => const AdminAppointmentsScreen(),
+    ),
+    GoRoute(
+      path: '/admin-chat-support',
+      name: 'admin-chat-support',
+      builder: (context, state) => const AdminChatSupportScreen(),
+    ),
+    GoRoute(
+      path: '/admin-social-media',
+      name: 'admin-social-media',
+      builder: (context, state) => const AdminSocialMediaScreen(),
     ),
   ],
 );

@@ -283,7 +283,7 @@ class _ManagementChatScreenState extends State<ManagementChatScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentRoute: '/management-chat'),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/management-chat'),
     );
   }
 

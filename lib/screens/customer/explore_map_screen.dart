@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tongkrongan_umkm_owner_app/models/business.dart';
 import 'package:tongkrongan_umkm_owner_app/widgets/customer/business_card.dart';
 import 'package:tongkrongan_umkm_owner_app/widgets/customer/customer_bottom_navigation.dart';
 import 'package:tongkrongan_umkm_owner_app/screens/customer/customer_home_screen.dart';
@@ -113,7 +114,7 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomerBottomNavigation(currentIndex: 1),
+      bottomNavigationBar: const CustomerBottomNavigation(currentLocation: '/explore-map'),
     );
   }
 
